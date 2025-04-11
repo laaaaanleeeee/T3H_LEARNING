@@ -1,0 +1,64 @@
+.bg {
+    width: 900px;
+    height: 600px;
+    background-color: darkgray;
+    position: relative;
+}
+
+.m1, .m2, .m3, .m4, .m5, .m6, .target-2022 {
+    width: 250px;
+    height: 135px;
+    position: absolute;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+}
+
+.m1 {
+    background-color: chartreuse;
+    margin-left: 30px;
+    margin-top: 130px;
+    color: white;
+}
+
+.m2 {
+    background-color: green;
+    margin-left: 325px;
+    margin-top: 30px;
+    color: white;
+}
+
+.m3 {
+    background-color: aqua;
+    margin-left: 620px;
+    margin-top: 130px;
+    color: white;
+}
+
+.target-2022 {
+    background-color: wheat;
+    margin-left: 325px;
+    margin-top: 220px;
+}
+
+.m4 {
+    background-color: red;
+    margin-left: 620px;
+    margin-top: 320px;
+    color: white;
+}
+
+.m5 {
+    background-color: pink;
+    margin-left: 325px;
+    margin-top: 420px;
+    color: white;
+}
+
+.m6 {
+    background-color: blue;
+    margin-left: 30px;
+    margin-top: 320px;
+    color: white;
+}
+

@@ -1,0 +1,36 @@
+.menu {
+    width: 100%;
+    height: 50px;
+    background-color: gray;
+    position: relative;
+    color: white;
+}
+
+.home, .intro, .services, .contact {
+    width: 100px;
+    height: 40px;
+    align-content: center;
+    text-align: center;
+    position: absolute;
+}
+
+.home {
+    margin-left: 20px;
+    margin-top: 5px;
+    background-color: darkgrey;
+}
+
+.intro {
+    margin-left: 140px;
+    margin-top: 5px;
+}
+
+.services {
+    margin-left: 260px;
+    margin-top: 5px;
+}
+
+.contact {
+    margin-left: 380px;
+    margin-top: 5px;
+}

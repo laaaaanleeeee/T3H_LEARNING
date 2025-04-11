@@ -1,0 +1,28 @@
+.blog {
+    height: 600px;
+    width: 660px;
+    border: 1px solid black;
+}
+
+h2 {
+    margin-left: 30px;
+}
+
+.box1 {
+    margin-left: 30px;
+    height: 400px;
+    width: 600px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.img {
+    height: 400px;
+    width: 600px;
+    background-color: gray;
+    border: 1px solid black;
+}
+
+p {
+    margin-left: 30px;
+}
