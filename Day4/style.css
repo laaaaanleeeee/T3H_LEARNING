@@ -1,0 +1,108 @@
+#website {
+    height: 690px;
+    width: 600px;
+    border: 1px solid black;
+}
+
+.top {
+    display: flex;
+    height: 40px;
+    width: 600px;
+    background-color: blanchedalmond;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    height: 20px;
+    width: 500px;
+    border: 1px solid black;
+    margin-right: 20px;
+}
+
+.circle {
+    height: 15px;
+    width: 15px;
+    background-color: darkgray;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.header {
+    display: flex;
+    width: 600px;
+    height: 50px;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+}
+
+.year {
+    margin-right: 200px;
+}
+
+.button {
+    margin-right: 10px;
+}
+
+.head-content {
+    display: flex;
+    height: 200px;
+    width: 600px;
+    background-color: aquamarine;
+    justify-content: center;
+    align-items: center;
+}
+
+.slogan {
+    font-size: 25px;
+    margin: 0px 50px;
+}
+
+.social {
+    height: 15px;
+    width: 15px;
+    background-color: rgb(17, 42, 105);
+    border-radius: 50%;
+    margin-right: 3px;
+}
+
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    width: 600px;
+    height: 300px;
+    flex-wrap: wrap;
+}
+
+.box {
+    height: 150px;
+    width: 150px;
+    border: 1px solid black;
+    background-color: blueviolet;
+    text-align: center;
+    align-content: center;
+    font-size: 30px;
+}
+
+.footer {
+    display: flex;
+    width: 600px;
+    height: 100px;
+}
+
+.block1 {
+    width: 100px;
+    height: 100px;
+    background-color: cadetblue;
+}
+
+.block2 {
+    width: 400px;
+    height: 100px;
+    background-color: coral;
+    margin: 0px 3px;
+}
+
