@@ -1,0 +1,435 @@
+#coupon_save {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+}
+
+.main-menu {
+    display: block;
+}
+
+.dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.dropdown {
+    display: none;
+}
+
+.choose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 4px;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.choose:last-child {
+    color: white;
+    background-color: #d2691e;
+    border-radius: 4px;
+}
+
+.choose:hover {
+    background-color: #f5f5f5;
+}
+
+.choose:nth-child(4) {
+    margin-right: 10px;
+}
+
+.choose:last-child:hover {
+    background-color: #b3561a;
+}
+
+.search_bar {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    width: 15rem;
+    padding: 0.3rem 0.8rem;
+    background-color: #f9f9f9;
+}
+
+.search_bar input {
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+    font-size: 0.9rem;
+}
+
+.logo_search {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.acc {
+    margin: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.acc button {
+    border-radius: 20px;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+}
+
+.cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.logo_cart {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+
+.in4 {
+    margin-top: 12vh;
+    background-color: #c0c0c0;
+}
+
+.sidebar {
+    background-color: white;
+    height: fit-content;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.sidebar .avatar {
+    text-align: center;
+}
+.sidebar .avatar i {
+    font-size: 80px;
+    color: #ccc;
+}
+.sidebar .name {
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.sidebar .menu-item {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.sidebar .menu-item.active {
+    color: #ff4500;
+    border-left: 2px solid #ff4500;
+}
+.sidebar .menu-item i {
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.sidebar .menu-item a {
+    color: black;
+    text-decoration: none;
+}
+.content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+.content label {
+    font-weight: bold;
+}
+.btn-warning {
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 5%;
+}
+
+
+.site-footer {
+    background: url('https://c.pxhere.com/photos/44/ea/mango_fruit_still_life_food_photography-568033.jpg!d') no-repeat center center/cover;
+    color: #fff;
+    padding: 40px 20px 20px;
+    font-size: 14px;
+}
+
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.footer-column a {
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.footer-column {
+    width: 22%;
+    min-width: 200px;
+}
+
+.footer-column h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.payment-methods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.payment-methods img {
+    width: 40px;
+    height: auto;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.company-info p,
+.certification p {
+    margin: 5px 0;
+}
+
+.certification img {
+    width: 120px;
+    margin-bottom: 5px;
+}
+
+.certification {
+    margin-right: 10vw;
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .choose {
+        width: 7rem;
+        font-size: 0.95rem;
+    }
+
+    .search_bar {
+        width: 12rem;
+    }
+
+    .acc {
+        margin: 0 1rem;
+    }
+}
+
+
+
+@media (max-width: 992px) {
+    .main-menu {
+        display: none;
+    }
+
+    .dropdown {
+        display: block;
+    }
+
+    .header {
+        padding: 0.5rem 1rem;
+    }
+
+    .header .row {
+        align-items: center;
+        margin: 0;
+    }
+
+    .col-7.d-flex {
+        width: auto;
+        flex: 0 0 auto;
+    }
+
+    .col-md-5.d-flex {
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .dropdown button {
+        border-radius: 20px;
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+        background-color: #d2691e;
+        border: none;
+        color: white;
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 200px;
+    }
+
+    .dropdown-item {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        transition: background-color 0.2s;
+    }
+
+    .dropdown-item:hover {
+        background-color: #f5f5f5;
+    }
+
+    .search_bar {
+        width: 100%;
+        max-width: 180px;
+        margin: 0 0.5rem;
+    }
+
+    .acc {
+        margin: 0 0.5rem;
+    }
+
+    .acc button {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.85rem;
+        width: fit-content;
+    }
+
+    .cart {
+        margin: 0 0.5rem;
+    }
+
+
+    .footer-top {
+        flex-direction: column;
+    }
+
+    .footer-column {
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .certification {
+        margin-right: 0;
+        margin-top: 1rem;
+    }
+
+}
+
+
+
+
+@media (max-width: 576px) {
+    .header {
+        padding: 0.5rem;
+    }
+
+    .col-6.d-flex {
+        flex: 0 0 auto;
+    }
+
+    .col-md-5.d-flex {
+        flex: 1;
+        justify-content: flex-end;
+        gap: 0.5rem;
+    }
+
+    .dropdown button {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .search_bar {
+        max-width: 30px;
+        padding: 0.3rem;
+        background: transparent;
+        border: none;
+    }
+
+    .search_bar input {
+        display: none;
+    }
+
+    .search_bar:hover {
+        background: #f5f5f5;
+        border-radius: 50%;
+    }
+
+    .logo_search {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+
+    .acc {
+        margin: 0 0.3rem;
+    }
+
+    .acc button {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.8rem;
+        width: fit-content;
+    }
+
+    .cart {
+        margin: 0 0.3rem;
+    }
+
+    .logo_cart {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+
+    .site-footer {
+        padding: 2rem 4vw 1rem;
+    }
+
+    .footer-column h4 {
+        font-size: 1rem;
+    }
+
+    .payment-methods img {
+        width: 30px;
+    }
+
+    .certification img {
+        width: 100px;
+    }
+}

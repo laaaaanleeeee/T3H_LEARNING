@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <div id="about_us">
+        <div class="header container-fluid fixed-top">
+            <div class="row mt-3 mb-3 container-fluid d-flex justify-content-center align-items-center flex-nowrap">
+                <div class="col-7 d-flex align-items-center">
+                    <nav class="main-menu d-none d-lg-block">
+                        <div class="list_menu d-flex justify-content-center align-items-center flex-nowrap">
+                            <a href="../Home_screen/index.html" class="choose">Trang chủ</a>
+                            <a href="../Menu_screen/index.html" class="choose">Thực đơn</a>
+                            <a href="../About_screen/index.html" class="choose">Về chúng tôi</a>
+                            <a href="../News_screen/index.html" class="choose">Tin tức</a>
+                            <a href="../Booking_screen/index.html" class="choose">Đặt tiệc ngay</a>
+                        </div>
+                    </nav>
+
+                    <div class="dropdown d-flex justify-content-center align-items-center d-lg-none">
+                        <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Menu
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../Home_screen/index.html">Trang chủ</a></li>
+                            <li><a class="dropdown-item" href="../Menu_screen/index.html">Thực đơn</a></li>
+                            <li><a class="dropdown-item" href="../About_screen/index.html">Về chúng tôi</a></li>
+                            <li><a class="dropdown-item" href="../News_screen/index.html">Tin tức</a></li>
+                            <li><a class="dropdown-item" href="../Booking_screen/index.html">Đặt tiệc ngay</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-5 d-flex justify-content-end align-items-center">
+                    <div class="search_bar">
+                        <input type="text" placeholder="Tìm kiếm món ăn">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACgSURBVHgBlZCBDYIwFERPJ+gIfwRHYIRuoCO4gWwCI+gEjCAbECfADfRqj1jID4RLXtr+z5V/Bf4K5EaeZNTaEIMj0wcdiTpXpJX5vDQ0anq6yGTl7bOCo5bU0+FK7lhX1Mg4qjBuGN7TJhl65IBrOpFXWRjgvIRk6seyWJEPcp5lfRABzm9TI+Xpin2NHDgRDvDnNeSgvdagSx7Yod9IX21cJPyOvc8OAAAAAElFTkSuQmCC" class="logo_search" alt="logo_search">
+                    </div>
+                    <div class="acc d-flex justify-content-center align-items-center">
+                        <button class="btn btn-outline-light dropdown-header" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle"> Trang chủ</i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../Account_screen/My_info/index.html">Thông tin cá nhân</a></li>
+                            <li><a class="dropdown-item" href="../Account_screen/Setting_address/index.html">Cài đặt địa chỉ</a></li>
+                            <li><a class="dropdown-item" href="../Home_screen/index.html">Quản lý đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="../Account_screen/Coupon_saved/index.html">Mã đã lưu</a></li>
+                            <li><a class="dropdown-item" href="../Home_screen/index.html" style="color: #ef4949;">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                    <div class="cart position-relative">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEjSURBVHgBrVSBUcMwDPz2OkA2aDbAI2QDsgFhgnYD2ABGCCMwQcMEZQPMBIQJgkVejeq6aXvnv/tTrMhvyVICnKIIrJAZu8Ah8AEZsaXoT2CJjGgpvEdGyL1+UfgFGVFRdMCNjVvQOozZxXiioA98xGV48r+8ISPrBR9E/W0mAxmvEmMDv8/ESKUbiVkZxxrzZZWYH7Gj63tGvtJltmsV3tFZXJtJlHXD/Y0N0K9oy/WeB8Xv10bQxmtS4seSzpb2nrbHOErFmSwrWk8hWXdcH0R7OlXonX6HNPTwT3PAYXqWJlCFGgYLaqThGOMx/c26lGhrsui4QdHT/mK6ig8kSk9BL9xhmkulSzxvkOh6DO3yrbNZWpFVJPpKe4frIQ3y1vEHsct2Y7HmFPwAAAAASUVORK5CYII=" alt="Logo_cart" class="logo_cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container intro mb-5">
+            <div class="all_intro intro d-flex justify-content-center flex-nowrap">
+                <div class="intro_text">
+                    <h1 class="text-start">SỰ LỰA CHỌN ẨM THỰC SỐ 1</h1>
+                    <button type="button" class="btn btn-warning mt-4"><a href="../View_image/index.html">Xem ảnh tiệc</a></button>
+                </div>
+                <div class="intro_video">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item video" src="https://www.youtube.com/watch?v=ZkITTCz1mhk" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="text_intro d-flex justify-content-center align-items-center">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo neque sequi dolor soluta perspiciatis sit eligendi ducimus? Expedita laborum libero nostrum consectetur ea est. <br>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo neque sequi dolor soluta perspiciatis sit eligendi ducimus? Expedita laborum libero nostrum consectetur ea est, autem aliquam dolorem magnam illo voluptatem! autem aliquam dolorem magnam illo voluptatem!</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo neque sequi dolor soluta perspiciatis sit eligendi ducimus? Expedita laborum libero nostrum consectetur ea est. <br> autem aliquam dolorem magnam illo voluptatem!</p>
+                            </div>
+                            <div class="col-6">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo neque sequi dolor soluta perspiciatis sit eligendi ducimus? Expedita laborum libero nostrum consectetur ea est, autem aliquam dolorem magnam illo voluptatem! Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo neque sequi dolor soluta perspiciatis sit eligendi ducimus? Expedita laborum libero nostrum consectetur ea est, autem aliquam dolorem magnam illo voluptatem! Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo neque sequi dolor soluta perspiciatis sit eligendi ducimus? Expedita laborum libero nostrum consectetur ea est, autem aliquam dolorem magnam illo voluptatem!</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="about_res mt-5">
+            <div class="res container">
+                <h1 >TIỆC TẠI GIA <br> CHẤT NHÀ HÀNG</h1>
+
+                <div class="row d-flex flex-nowrap">
+                    <div class="col-3">
+                        <h2>80+</h2>
+                        <p>MÓN ĂN ĐA DẠNG 1</p>
+                    </div>
+                    <div class="col-3">
+                        <h2>6+</h2>
+                        <p>SET MENU TIÊU CHUẨN</p>
+                    </div>
+                    <div class="col-3">
+                        <h2>15+</h2>
+                        <p>NĂM KINH NGHIỆM</p>
+                    </div>
+                    <div class="col-3">
+                        <h2>100+</h2>
+                        <p>NHÂN VIÊN CHUYÊN NGHIỆP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="about_service container-fluid mb-5" id="ab_ser">
+            <div class="ser">
+                <h1 class="text-center">DỊCH VỤ CUNG CẤP</h1>
+
+
+                <div class="all_service d-flex flex-wrap justify-content-start align-items-center">
+                    <div class="service">
+                        <div class="illustration">
+                            <img src="https://png.pngtree.com/png-vector/20220512/ourmid/pngtree-delete-background-banner-business-button-png-image_4596576.png" alt="">
+                        </div>
+                        <div class="text_service">
+                            <p>TIỆC TẠI GIA</p>
+                            <p>Tiết kiệm thời gian cho bữa tiệc ấm cúng, dành trọn khoảnh khắc sum vầy bên người thân yêu - Bạn chỉ cần lựa chọn thực đơn yêu thích, Tiệc tại gia sẽ mang trải nghiệm trọn vẹn đến với gia đình</p>
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="illustration">
+                            <img src="https://png.pngtree.com/png-vector/20220512/ourmid/pngtree-delete-background-banner-business-button-png-image_4596576.png" alt="">
+                        </div>
+                        <div class="text_service">
+                            <p>TIỆC CƯỚI HỎI</p>
+                            <p>Sự kiện đặc biệt, không thể thiếu đội ngũ tận tâm. Với thực đơn phong phú từ truyền thống tới hiện đại, cùng đội ngũ phục vụ chuyên nghiệp, Tiệc tại gia sẽ đồng hành cùng bạn và gia đình trong ngày vui một cách trọn vẹn nhất</p>
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="illustration">
+                            <img src="https://png.pngtree.com/png-vector/20220512/ourmid/pngtree-delete-background-banner-business-button-png-image_4596576.png" alt="">
+                        </div>
+                        <div class="text_service">
+                            <p>TIỆC BUFFET</p>
+                            <p>Tiệc buffet với nhiều lựa chọn thực đơn đa dạng dành cho các sự kiện lớn nhò, từ các hoạt động mở và có nhiều thời gian như gala dinner đến liên hoan nội bộ hay tiệc gia đình.</p>
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="illustration">
+                            <img src="https://png.pngtree.com/png-vector/20220512/ourmid/pngtree-delete-background-banner-business-button-png-image_4596576.png" alt="">
+                        </div>
+                        <div class="text_service">
+                            <p>TIỆC SỰ KIỆN</p>
+                            <p>Tiệc tại gia sẽ giúp bạn lo chu toàn các sự kiện lớn cho công ty, hội thảo cần sự chìn chu từ khâu chuẩn bị tới quy trình phục vụ chuyên nghiệp, đảm bảo hài lòng mọi khách hàng tham dự.</p>
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="illustration">
+                            <img src="https://png.pngtree.com/png-vector/20220512/ourmid/pngtree-delete-background-banner-business-button-png-image_4596576.png" alt="">
+                        </div>
+                        <div class="text_service">
+                            <p>TIỆC TEA BREAK</p>
+                            <p>Tea break được tổ chức dưới hình thức tiệc đứng với trà, bánh ngọt, và hoa quả, diễn ra vào giữa giờ giải lao của các buổi hội nghị, khai trương,... giúp khách mời có khoảng thời gian thư giãn trước khi tiếp tục tham dự sự kiện.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="mission container">
+            <h1 class="text-center">TÔN CHỈ PHỤC VỤ</h1>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta ante dui, nec condimentum diam <br> auctor nec. sInteger auctor turpis odio, eu lacinia lorem ultricies at.</p>
+
+            <div class="all_mission d-flex flex-wrap justify-content-center align-items-center mt-5 mb-5">
+                <p class="mis_detail fs-4 text-center">THỰC PHẨM AN TOÀN CHẤT LƯỢNG NHÀ HÀNG</p>
+                <p class="mis_detail fs-4 text-center">DỊCH VỤ CHU ĐÁO CHĂM SÓC TẬN TÂM</p>
+                <p class="mis_detail fs-4 text-center">ĐỒNG HÀNH TRONG MỌI LỰA CHỌN ẨM THỰC</p>
+            </div>
+        </div>
+
+
+
+        <footer class="site-footer">
+            <div class="footer-top container">
+                <div class="footer-column">
+                    <h4>Về chúng tôi</h4>
+                    <p>Số điện thoại: 095.366.4722</p>
+                    <p>Địa chỉ: số 33 Nhân Chính, Trung Hòa, Cầu Giấy, Hà Nội</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Phương thức thanh toán</h4>
+                    <div class="payment-methods">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Truyền thông xã hội</h4>
+                    <p><i class="fab fa-facebook"></i><a href="https://www.facebook.com/le.hai.lan.2024">Facebook</a></p>
+                    <p><i class="fab fa-youtube"></i><a href="https://www.youtube.com/watch?v=WNeLUngb-Xg">Youtube</a></p>
+                </div>
+                <div class="footer-column">
+                    <h4>Hỗ trợ khách hàng</h4>
+                    <p><strong>Liên hệ:</strong> Hotline: 036.555.1123</p>
+                    <p><strong>Email:</strong> happy.@gmail.com</p>
+                    <p><strong>Địa chỉ:</strong> Số 33 Nhân Chính, Trung Hòa, Cầu Giấy, Hà Nội</p>
+                </div>
+            </div>
+          
+            <div class="footer-bottom container">
+                <div class="company-info">
+                    <p>Công ty TNHH Minh Trí</p>
+                    <p>số CND/DN/ cấp ngày 2/1/2020</p>
+                </div>
+                <div class="certification">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ2VLi69Ie_9lURmCpF22ZT9KoM7dSGlG77A&s" alt="Giấy chứng nhận">
+                    <p>© Thông báo</p>
+                </div>
+            </div>
+        </footer>          
+
+
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
+</body>
+</html>

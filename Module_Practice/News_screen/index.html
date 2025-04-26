@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <div id="news">
+        <div class="header container-fluid fixed-top">
+            <div class="row mt-3 mb-3 container-fluid d-flex justify-content-center align-items-center flex-nowrap">
+                <div class="col-7 d-flex align-items-center">
+                    <nav class="main-menu d-none d-lg-block">
+                        <div class="list_menu d-flex justify-content-center align-items-center flex-nowrap">
+                            <a href="../Home_screen/index.html" class="choose">Trang chủ</a>
+                            <a href="../Menu_screen/index.html" class="choose">Thực đơn</a>
+                            <a href="../About_screen/index.html" class="choose">Về chúng tôi</a>
+                            <a href="../News_screen/index.html" class="choose">Tin tức</a>
+                            <a href="../Booking_screen/index.html" class="choose">Đặt tiệc ngay</a>
+                        </div>
+                    </nav>
+
+                    <div class="dropdown d-flex justify-content-center align-items-center d-lg-none">
+                        <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Menu
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../Home_screen/index.html">Trang chủ</a></li>
+                            <li><a class="dropdown-item" href="../Menu_screen/index.html">Thực đơn</a></li>
+                            <li><a class="dropdown-item" href="../About_screen/index.html">Về chúng tôi</a></li>
+                            <li><a class="dropdown-item" href="../News_screen/index.html">Tin tức</a></li>
+                            <li><a class="dropdown-item" href="../Booking_screen/index.html">Đặt tiệc ngay</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-5 d-flex justify-content-end align-items-center">
+                    <div class="search_bar">
+                        <input type="text" placeholder="Tìm kiếm món ăn">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACgSURBVHgBlZCBDYIwFERPJ+gIfwRHYIRuoCO4gWwCI+gEjCAbECfADfRqj1jID4RLXtr+z5V/Bf4K5EaeZNTaEIMj0wcdiTpXpJX5vDQ0anq6yGTl7bOCo5bU0+FK7lhX1Mg4qjBuGN7TJhl65IBrOpFXWRjgvIRk6seyWJEPcp5lfRABzm9TI+Xpin2NHDgRDvDnNeSgvdagSx7Yod9IX21cJPyOvc8OAAAAAElFTkSuQmCC" class="logo_search" alt="logo_search">
+                    </div>
+                    <div class="acc d-flex justify-content-center align-items-center">
+                        <button class="btn btn-outline-light dropdown-header" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle"> Trang chủ</i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../Account_screen/My_info/index.html">Thông tin cá nhân</a></li>
+                            <li><a class="dropdown-item" href="../Account_screen/Setting_address/index.html">Cài đặt địa chỉ</a></li>
+                            <li><a class="dropdown-item" href="../Home_screen/index.html">Quản lý đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="../Account_screen/Coupon_saved/index.html">Mã đã lưu</a></li>
+                            <li><a class="dropdown-item" href="../Home_screen/index.html" style="color: #ef4949;">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                    <div class="cart position-relative">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEjSURBVHgBrVSBUcMwDPz2OkA2aDbAI2QDsgFhgnYD2ABGCCMwQcMEZQPMBIQJgkVejeq6aXvnv/tTrMhvyVICnKIIrJAZu8Ah8AEZsaXoT2CJjGgpvEdGyL1+UfgFGVFRdMCNjVvQOozZxXiioA98xGV48r+8ISPrBR9E/W0mAxmvEmMDv8/ESKUbiVkZxxrzZZWYH7Gj63tGvtJltmsV3tFZXJtJlHXD/Y0N0K9oy/WeB8Xv10bQxmtS4seSzpb2nrbHOErFmSwrWk8hWXdcH0R7OlXonX6HNPTwT3PAYXqWJlCFGgYLaqThGOMx/c26lGhrsui4QdHT/mK6ig8kSk9BL9xhmkulSzxvkOh6DO3yrbNZWpFVJPpKe4frIQ3y1vEHsct2Y7HmFPwAAAAASUVORK5CYII=" alt="Logo_cart" class="logo_cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container my-4 all_events">
+            <h4 class="text-center mb-5">TIN TỨC SỰ KIỆN</h4>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết chính">
+                        <div class="card-body">
+                            <h2 class="card-title">Gợi ý menu tiệc mini giá cho 12-15 nguồn siêu ngon</h2>
+                            <p class="card-text">Kế thừa tinh hoa đầu bếp nổi tiếng, chung tói cung cấp giải pháp phục vụ tiệc tại gia đạt chuẩn chất lượng nhà hàng, giúp khách hàng tiết kiệm thời gian và công sức, dành chọn khoảng khắc sum vầy bên những nguồn thân yêu...</p>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-6 mb-4">
+                            <div class="card">
+                                <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                                <div class="card-body">
+                                    <h5 class="card-title">Hà Nội: Mách bạn những địa chỉ đặt tiệc chất lượng giá</h5>
+                                    <p class="text-muted small">12.02.2018</p>
+                                    <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-4">
+                            <div class="card">
+                                <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                                <div class="card-body">
+                                    <h5 class="card-title">Điểm tên 5 món ăn nóng chuẩn vị tiệc nhà hàng</h5>
+                                    <p class="text-muted small">12.02.2018</p>
+                                    <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 mb-4">
+                            <div class="card">
+                                <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                                <div class="card-body">
+                                    <h5 class="card-title">Điểm tên 5 món ăn nóng chuẩn vị tiệc nhà hàng</h5>
+                                    <p class="text-muted small">12.02.2018</p>
+                                    <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 mb-4">
+                            <div class="card">
+                                <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                                <div class="card-body">
+                                    <h5 class="card-title">Điểm tên 5 món ăn nóng chuẩn vị tiệc nhà hàng</h5>
+                                    <p class="text-muted small">12.02.2018</p>
+                                    <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Đặt có tết, 3 địa chỉ đặt có tết online siêu tiện lợi lưu vị ăn ngon</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Nhốn nhịp “đặt” mâm có Rằm tháng riêng online</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Đi chơi online, làm mâm có chạy 9 món cực Rằm tháng 7</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Có tết thời công nghệ, chị em hiện đại nhanh tay đặt</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Đặt có tết, 3 địa chỉ đặt có tết online siêu tiện lợi lưu vị ăn ngon</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Nhốn nhịp “đặt” mâm có Rằm tháng riêng online</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Đi chơi online, làm mâm có chạy 9 món cực Rằm tháng 7</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Có tết thời công nghệ, chị em hiện đại nhanh tay đặt</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Đặt có tết, 3 địa chỉ đặt có tết online siêu tiện lợi lưu vị ăn ngon</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Nhốn nhịp “đặt” mâm có Rằm tháng riêng online</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Đi chơi online, làm mâm có chạy 9 món cực Rằm tháng 7</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://c.pxhere.com/photos/19/ec/curry_dark_background_Indian_rice_top_view-1627234.jpg!d" class="card-img-top" alt="Hình ảnh bài viết">
+                        <div class="card-body">
+                            <h5 class="card-title">Có tết thời công nghệ, chị em hiện đại nhanh tay đặt</h5>
+                            <p class="text-muted small">12.02.2018</p>
+                            <a href="#" class="btn btn-link p-0 text-decoration-none">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" href="#">12</a></li>
+                    <li class="page-item"><a class="page-link" href="#">→</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+
+
+
+        <footer class="site-footer">
+            <div class="footer-top container">
+                <div class="footer-column">
+                    <h4>Về chúng tôi</h4>
+                    <p>Số điện thoại: 095.366.4722</p>
+                    <p>Địa chỉ: số 33 Nhân Chính, Trung Hòa, Cầu Giấy, Hà Nội</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Phương thức thanh toán</h4>
+                    <div class="payment-methods">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Truyền thông xã hội</h4>
+                    <p><i class="fab fa-facebook"></i><a href="https://www.facebook.com/le.hai.lan.2024">Facebook</a></p>
+                    <p><i class="fab fa-youtube"></i><a href="https://www.youtube.com/watch?v=WNeLUngb-Xg">Youtube</a></p>
+                </div>
+                <div class="footer-column">
+                    <h4>Hỗ trợ khách hàng</h4>
+                    <p><strong>Liên hệ:</strong> Hotline: 036.555.1123</p>
+                    <p><strong>Email:</strong> happy.@gmail.com</p>
+                    <p><strong>Địa chỉ:</strong> Số 33 Nhân Chính, Trung Hòa, Cầu Giấy, Hà Nội</p>
+                </div>
+            </div>
+          
+            <div class="footer-bottom container">
+                <div class="company-info">
+                    <p>Công ty TNHH Minh Trí</p>
+                    <p>số CND/DN/ cấp ngày 2/1/2020</p>
+                </div>
+                <div class="certification">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ2VLi69Ie_9lURmCpF22ZT9KoM7dSGlG77A&s" alt="Giấy chứng nhận">
+                    <p>© Thông báo</p>
+                </div>
+            </div>
+        </footer> 
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
+</body>
+</html>
