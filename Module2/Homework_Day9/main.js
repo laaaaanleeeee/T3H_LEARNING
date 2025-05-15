@@ -242,7 +242,7 @@
 
 // Task2
 
-const s = ["Tralalero Tralala", "Bombardiro Crocodilo", "Tung Tung Tung Sahur", "Ballerina Cappuccina", "Trippi Troppi", "Brr Brr Patapim"];
+// const s = ["Tralalero Tralala", "Bombardiro Crocodilo", "Tung Tung Tung Sahur", "Ballerina Cappuccina", "Trippi Troppi", "Brr Brr Patapim"];
 
 // let min = s[0];
 // for (let i = 0; i < s.length; i++) {
@@ -346,36 +346,56 @@ const s = ["Tralalero Tralala", "Bombardiro Crocodilo", "Tung Tung Tung Sahur", 
 
 
 // Task4
-// let growth = [[5,8,9,16], [2,7,1,9], [5,6,8,12], [10,2,1,8], [20,4,9,1]];
 
-// let new_growth = [];
-// for (let i = 0; i < growth.length; i++) {   
-//     let sum = 0;
-//     for (let j = 0; j < growth[i].length; j++) { 
+let growth = [[5,8,9,16], [2,7,1,9], [5,6,8,12], [10,2,1,8], [20,4,9,1]];
+
+// let sum = 0;
+// let mean = 0;
+// let new_a = [];
+
+// for(let i = 0; i < growth.length; i++) {
+//     for (let j = 0; j < growth[i].length; j++) {
 //         sum += growth[i][j];
 //     }
-//     new_growth.push(sum / growth[i].length);
+//     mean = sum / 5;
+//     console.log(mean);
+//     new_a.push(mean);
 // }
-// console.log(new_growth);
+// console.log(new_a);
 
-// let max = new_growth[0];
-// for (let i = 0; i < new_growth.length; i++) {
-//     if (new_growth[i] > max) {
-//         max = new_growth[i];
+// let maxA = new_a[0];
+// for(let a = 0; a < new_a.length; a++) {
+//     if(new_a[a] > maxA) {
+//         maxA = new_a[a];
 //     }
 // }
-// console.log(max);
+// console.log(maxA);
 
-// for (let c = 0; c < growth.length; c++) {
-//     let max = growth[0][c];
-//     for (let r = 0; r < growth.length; r++) {
-//         if (growth[r][c] > max) {
-//             max = growth[r][c];
+// let maxC = growth[0][0];
+// for(let i = 0; i < growth.length; i++) { 
+//     for (let j = 0; j < growth[i].length; j++) {
+//         if(growth[i][j] > maxC) {
+//             maxC = growth[i][j]; 
 //         }
 //     }
-//     console.log(max);
 // }
-    
+
+// console.log(maxC);
+
+
+// let sum = 0;
+// let mean = 0;
+// let new_c = [];
+
+// for(let i = 0; i < growth[0].length; i++) {
+//     for (let j = 0; j < growth.length; j++) {
+//         sum += growth[j][i];
+//     }
+//     mean = sum / 5;
+//     console.log(mean);
+//     new_c.push(mean);
+// }
+// console.log(new_c);
 
 
 // Task5
