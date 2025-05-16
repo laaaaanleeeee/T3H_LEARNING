@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #form {
+            display: flex;
+        }
+
+        #enter_form {
+            border: 1px solid black;
+            width: fit-content;
+            padding: 2%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        #output_form {
+            width: fit-content;
+            padding: 2%;
+            display: block;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="form">
+        <div id="enter_form">
+        <form id="myForm">
+            <h1 style="text-align: center;">FORM</h1>
+            <label for="name">Họ tên: </label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="date">Năm sinh: </label>
+            <input type="text" name="date" id="date"><br><br>
+            <label for="age">Tuổi: </label>
+            <input type="text" id="age" name="age"><br><br>
+            <label for="gender">Giới tính: </label>
+            <input type="radio" name="gender" value="Nam">Nam
+            <input type="radio" name="gender" value="Nữ">Nữ<br><br>
+            <label for="phonenum">Số điện thoại: </label>
+            <input type="text" name="phonenum" id="phonenum"><br><br>
+            <input type="submit" value="Submit" onclick="confirm_form()">
+            <input type="reset" value="Reset">
+        </div>
+
+        <div id="output_form">
+            <div id="confirm_form">
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="./main.js"></script>
+</body>
+</html>
