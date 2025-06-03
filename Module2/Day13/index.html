@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="login_screen" style="padding: 3%">
+        <div id="register" style="border: 1px solid black; padding: 3%; width: fit-content; margin-bottom: 20px;">
+            <h1>Đăng ký</h1>
+            <label for="name">Họ tên: </label>
+            <input type="text" name="name" id="name"><br>
+            <label for="ema">Email: </label>
+            <input type="email" name="ema" id="ema"><br>
+            <label for="gender">Giới tính: </label>
+            <input type="radio" name="gender" id="male" value="Nam">
+            <label for="male">Nam</label>
+            <input type="radio" name="gender" id="female" value="Nữ">
+            <label for="female">Nữ</label><br>
+            <label for="dborn">Ngày sinh: </label>
+            <input type="datetime" name="dborn" id="dborn"><br>
+            <label for="username">Tên đăng nhập: </label>
+            <input type="text" name="username" id="username"><br>
+            <label for="pass">Mật khẩu: </label>
+            <input type="password" name="pass" id="pass"><br>
+            <input type="submit" value="Đăng ký" onclick="confirmForm()">
+        </div>
+        <div id="login" style="border: 1px solid black; padding: 3%; width: fit-content;">
+            <h1>Đăng nhập</h1>
+            <label for="unlogin">Tên đăng nhập: </label>
+            <input type="text" name="username" id="unlogin"><br>
+            <label for="passlogin">Mật khẩu: </label>
+            <input type="password" name="passlogin" id="passlogin"><br>
+            <input type="submit" value="Đăng nhập" onclick="confirmLogin()">
+        </div>
+
+        <div id="result">
+
+        </div>
+    </div>
+
+
+    <script src="./main.js"></script>
+</body>
+</html>
