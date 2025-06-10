@@ -15,13 +15,13 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-5" style="background-color:bisque; padding: 5%;">
         <div id="title">
             <h1 class="text-center mt-5"><b>#todo</b></h1>
         </div>
 
 
-        <div class="btn-group mt-5 d-flex" role="group">
+        <div class="btn-group mt-5 d-flex gap-5" role="group">
             <input type="radio" class="btn-check" onclick="ChangePage('all')" name="btnradio" id="btnall" autocomplete="off" checked>
             <label class="btn btn-outline-primary" for="btnall">All</label>
 
@@ -34,7 +34,7 @@
 
 
         <div id="allscreen" class="mt-5">
-            <div id="formadd" class="input-group">
+            <div id="formadd" class="input-group gap-3">
                 <input type="text" class="form-control" id="addtask" placeholder="add details">
                 <button class="btn btn-primary" type="button" id="button-add" onclick="saveTasks()">Add</button>
                 <button type="button" class="btn btn-danger" onclick="DeleteAllTask()">Delete All</button>
@@ -49,7 +49,7 @@
             </div>
 
             <table  class="table table-success table-striped mt-5">
-                <thead>
+                <thead  id="headTable">
                     <th>Status</th>
                     <th>Detail</th>
                     <th>Delete</th>

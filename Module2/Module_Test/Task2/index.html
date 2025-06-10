@@ -14,7 +14,7 @@
             height: 50%;
             margin-top: 10vh;
             padding: 5%;
-            background-color: darkturquoise;
+            background-color: bisque;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
@@ -129,11 +129,8 @@
     <div id="showuser" class="container-fluid d-flex justify-content-center align-content-center">
         <div id="showuserform">
             <h1 class="text-center"><b>Lọc danh sách người dùng theo từ khóa</b></h1>
-            <div class="input-group mb-3 mt-5">
+            <div class="input-group gap-5 mb-3 mt-5">
                 <input type="text" class="form-control" id="inputkeyword" placeholder="Nhập vào từ khóa...">
-            </div>
-
-            <div class="d-grid gap-2">
                 <button class="btn btn-primary" type="button" id="button-addon2" onclick="filterUser()">Lọc người dùng</button>
                 <button class="btn btn-primary" type="button" onclick="turnOffListUser()">Tắt danh sách</button>
             </div>
@@ -156,20 +153,20 @@
     <div id="showpost" class="container-fluid d-flex justify-content-center align-content-center">
         <div id="postform">
             <h1 class="text-center"><b>Danh sách các bài viết</b></h1>
-            <div class="d-grid gap-2">
-                <button class="btn btn-primary  mt-5" type="button" onclick="showPosts()">Xem danh sách</button>
-                <select class="form-select" id="chooseop" onchange="ChangePostPerPage()">
+            <div class="row d-flex gap-5 container">
+                <button class="btn btn-primary col  mt-5" type="button" onclick="showPosts()">Xem danh sách</button>
+                <button class="btn btn-primary col  mt-5" type="button" onclick="turnOffListPosts()">Tắt danh sách</button>
+                <select class="form-select col  mt-5" id="chooseop" onchange="ChangePostPerPage()">
                     <option value="5" selected>Hiển thị 5</option>
                     <option value="10">Hiển thị 10</option>
                     <option value="15">Hiển thị 15</option>
                     <option value="20">Hiển thị 20</option>
                 </select>
-                <div class="input-group">
-                    <input type="email" id="searchUserEmail" class="form-control" placeholder="Nhập email user...">
-                    <button class="btn btn-primary" type="button" onclick="searchPosts()">Tìm kiếm</button>
-                </div>
-                <button class="btn btn-primary" type="button" onclick="turnOffListPosts()">Tắt danh sách</button>
-                
+            </div>
+            <div class="input-group row d-flex mt-3 container">
+                    <span class="input-group-text col-1" id="basic-addon1">Tìm kiếm</span>
+                    <input type="email" id="searchUserEmail" class="form-control col-10" placeholder="Nhập email user...">
+                    <button class="btn btn-primary col-1" type="button" onclick="searchPosts()">Tìm kiếm</button>
             </div>
             
             <table class="table table-success table-striped mt-5">
@@ -216,7 +213,7 @@
                 </div>
                     
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
                 </div>
                     
             </div>

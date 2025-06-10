@@ -5,17 +5,27 @@ let taskPerPage = 5;
 
 function ShowTask() {
     const showTask = document.getElementById("formtask");
-    let start = (currentPagePagi - 1) * taskPerPage;
-    let end = start + taskPerPage;
-    let paginated = fulltask.slice(start, end);
-    
-    let result = "";
-    paginated.forEach((task) => {
-        if (
+
+    let filteredTasks = fulltask.filter((task) => {
+        return (
             currentPage === "all" ||
             (currentPage === "active" && task.status === "active") ||
             (currentPage === "completed" && task.status === "completed")
-        ) {
+        );
+    });
+
+    const totalPage = Math.ceil(filteredTasks.length / taskPerPage);
+
+    if(currentPagePagi > totalPage) {
+        currentPagePagi = totalPage || 1;
+    }
+
+    let start = (currentPagePagi - 1) * taskPerPage;
+    let end = start + taskPerPage;
+    let paginated = filteredTasks.slice(start, end);
+
+    let result = "";
+    paginated.forEach((task) => {
             result += `
                 <tr>
                     <td>
@@ -29,17 +39,22 @@ function ShowTask() {
                     </td>
                 </tr>
             `;
-        }
-    });
+        });
     showTask.innerHTML = result;
-    createPagi();
+    createPagi(filteredTasks);
     document.getElementById("addtask").value = "";
+    document.getElementById("headTable").style.display = paginated.length > 0 ? "table-header-group" : "none";
 }
 
 
 function saveTasks() {
     const newId = fulltask.length > 0 ? fulltask[fulltask.length - 1].id + 1 : 1;
     const getTask = document.getElementById("addtask").value.trim();
+
+    if(!getTask) {
+        alert("Hãy nhập đủ nội dung");
+        return;
+    }
 
     let tasks = {
         id: newId,
@@ -79,7 +94,7 @@ function ChangePage(page) {
         activeBtn.classList.remove("btn-outline-primary");
     }
 
-    document.getElementById("formadd").style.visibility = (page === "completed") ? "hidden" : "visible";
+    document.getElementById("formadd").style.display = (page === "completed") ? "none" : "flex";
 
     ShowTask();
 }
@@ -118,9 +133,16 @@ function ChangeTaskPerPage() {
     ShowTask();
 }
 
-function createPagi() {
+function createPagi(filteredTasks) {
     const pagination = document.getElementById("pagination");
-    const totalPage = Math.ceil(fulltask.length / taskPerPage);
+    const totalPage = Math.ceil(filteredTasks.length / taskPerPage);
+
+    if(currentPagePagi > totalPage && totalPage > 0) {
+        currentPagePagi = totalPage;
+    }
+    else if (totalPage === 0) {
+        currentPagePagi = 1;
+    }
 
     let pagi = "";
     if(currentPagePagi > 1) {
@@ -140,6 +162,7 @@ function createPagi() {
     }
 
     pagination.innerHTML = pagi;
+    pagination.style.display = filteredTasks.length > 0 ? "flex" : "none";
 }
 
 

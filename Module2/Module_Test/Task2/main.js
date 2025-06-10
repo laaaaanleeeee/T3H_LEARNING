@@ -616,6 +616,7 @@ function saveUser() {
     }
     else if (users.some(user => user.email === getEmailSU)) {
         alert("Email này đã có tài khoản");
+		document.getElementById("email_su").value = "";
         return;
     }
 
@@ -805,6 +806,12 @@ function showPostDetail(postId) {
 function searchPosts() {
     const valueSearch = document.getElementById("searchUserEmail").value.trim().toLowerCase();
     const resultSearch = document.getElementById("listsearch");
+    const pagination = document.getElementById("pagination");
+	const getPost = document.getElementById("listposts");
+
+	getPost.style.display = "none";
+	pagination.style.display = "none";
+
 
 	resultSearch.style.display = "table-row-group";
 
@@ -834,4 +841,5 @@ function searchPosts() {
         `;
     });
     resultSearch.innerHTML = rs;
+	document.getElementById("searchUserEmail").value = "";
 }
