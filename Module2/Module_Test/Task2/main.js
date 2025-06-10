@@ -572,9 +572,36 @@ let users = [
 	},
 ];
 
-
+let isFound = false;
+let isSignUp = false;
 let currentPagePagi = 1;
 let postPerPage = 5;
+
+
+function changeScreenManager() {
+	if(isFound === true) {
+		document.getElementById("loginform").style.display = "none";
+		document.getElementById("action").style.display = "block";
+	}
+}
+
+function chooseShowUser() {
+	document.getElementById("postform").style.display = "none";
+	document.getElementById("searchform").style.display = "none";
+	document.getElementById("showuserform").style.display = "block";
+}
+
+function chooseShowPost() {
+	document.getElementById("showuserform").style.display = "none";
+	document.getElementById("searchform").style.display = "none";
+	document.getElementById("postform").style.display = "block";
+}
+
+function chooseSearchPost() {
+	document.getElementById("postform").style.display = "none";
+	document.getElementById("showuserform").style.display = "none";
+	document.getElementById("searchform").style.display = "block";
+}
 
 function checkLogin() {
     const getEmail = document.getElementById("email").value.trim();
@@ -585,7 +612,6 @@ function checkLogin() {
         return;
     }
 
-    let isFound = false;
     users.forEach((user) => {
         if(getEmail === user.email && getPass === user.password) {
             alert(`Xin chào ${user.first_name} ${user.last_name}`)
@@ -600,8 +626,18 @@ function checkLogin() {
 
     document.getElementById("email").value = "";
     document.getElementById("password").value = "";
+	isLogin = true
+	changeScreenManager();
 }
 
+
+
+function changeScreenLogin() {
+	if(isSignUp === true) {
+		document.getElementById("loginform").style.display = "block";
+		document.getElementById("signupform").style.display = "none";
+	}
+}
 
 function saveUser() {
     const newId = users.length > 0 ? Math.max(...users.map(user => user.id)) + 1 : 1;
@@ -630,11 +666,19 @@ function saveUser() {
 
     users.push(user);
     alert("Đã thêm người dùng mới");
+	isSignUp = true;
     
 	document.getElementById("firstname_su").value = "";
 	document.getElementById("lastname_su").value = "";
 	document.getElementById("email_su").value = "";
 	document.getElementById("password_su").value = "";
+	changeScreenLogin();
+}
+
+
+function changeScreenSignUp() {
+	document.getElementById("loginform").style.display = "none";
+	document.getElementById("signupform").style.display = "block";
 }
 
 

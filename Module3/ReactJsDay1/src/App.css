@@ -1,0 +1,97 @@
+.header {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.header .button_rightside {
+  margin-left: 20rem;
+}
+
+.header .button_rightside:hover {
+  background-color: white;
+  border-radius: 10%;
+}
+
+.header .button_header_last {
+  background-color: darkslateblue;
+  color: white;
+  border-radius: 10%;
+}
+
+.header .button_header_last:hover {
+  background-color: white;
+  color: black;
+}
+
+.button_header:hover {
+  color: green;
+}
+
+button {
+  margin-left: 2rem;
+  background-color: #fff2d9;
+  border: none;
+  color: black;
+  font-size: larger;
+}
+
+.content {
+  margin-top: 5rem;
+  display: flex;
+}
+
+.leftside {
+  margin-right: 10rem;
+}
+
+.rightside .logo {
+  width: 29rem;
+  height: 35rem;
+}
+
+.content h1 {
+  width: 450px;
+  font-size: 50px;
+}
+
+.content p {
+  font-size: larger;
+}
+
+.searchaddress {
+  margin-top: 5vh;
+  display: flex;
+  height: 4rem;
+}
+
+.inputaddress {
+  width: 20rem;
+}
+
+.buttonaddress {
+  margin: 0;
+  background-color: black;
+  color: white;
+}
+
+.download {
+  display: flex;
+  margin-top: 3rem;
+}
+
+.button_download {
+  display: flex;
+  margin: 0;
+  border: 1px solid black;
+  margin-right: 3rem;
+}
+
+.button_download p {
+  font-size: smaller;
+}
+
+
+.title_download {
+  margin-left: 1rem;
+}
