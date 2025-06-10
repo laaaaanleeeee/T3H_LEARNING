@@ -23,21 +23,21 @@
 
         <div class="btn-group mt-5 d-flex gap-5" role="group">
             <input type="radio" class="btn-check" onclick="ChangePage('all')" name="btnradio" id="btnall" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btnall">All</label>
+            <label class="btn btn-outline-primary" for="btnall">Tất cả</label>
 
             <input type="radio" class="btn-check" onclick="ChangePage('active')" name="btnradio" id="btnactive" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnactive">Active</label>
+            <label class="btn btn-outline-primary" for="btnactive">Có sẵn</label>
 
             <input type="radio" class="btn-check" onclick="ChangePage('completed')" name="btnradio" id="btncompleted" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btncompleted">Completed</label>
+            <label class="btn btn-outline-primary" for="btncompleted">Đã hoàn thành</label>
         </div>
 
 
         <div id="allscreen" class="mt-5">
             <div id="formadd" class="input-group gap-3">
-                <input type="text" class="form-control" id="addtask" placeholder="add details">
-                <button class="btn btn-primary" type="button" id="button-add" onclick="saveTasks()">Add</button>
-                <button type="button" class="btn btn-danger" onclick="DeleteAllTask()">Delete All</button>
+                <input type="text" class="form-control" id="addtask" placeholder="Thêm chi tiết công việc...">
+                <button class="btn btn-primary" type="button" id="button-add" onclick="saveTasks()">Thêm</button>
+                <button type="button" class="btn btn-danger" onclick="DeleteAllTask()">Xóa tất cả</button>
                 <div class="col-md-3 offset-md-2">
                     <select class="form-select" id="chooseop" onchange="ChangeTaskPerPage()">
                         <option value="5" selected>Hiển thị 5</option>
@@ -50,9 +50,9 @@
 
             <table  class="table table-success table-striped mt-5">
                 <thead  id="headTable">
-                    <th>Status</th>
-                    <th>Detail</th>
-                    <th>Delete</th>
+                    <th>Trạng thái</th>
+                    <th>Chi tiết công việc</th>
+                    <th></th>
                 </thead>
 
                 <tbody id="formtask">

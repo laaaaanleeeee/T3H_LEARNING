@@ -35,7 +35,7 @@ function ShowTask() {
                         <p class="fw-bold ${task.status === "completed" ? "text-decoration-line-through text-muted" : ""}">${task.task}</p>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-danger" onclick="DeleteTask(${task.id})">Delete</button>
+                        <button type="button" class="btn btn-danger" onclick="DeleteTask(${task.id})">Xóa</button>
                     </td>
                 </tr>
             `;
@@ -101,7 +101,7 @@ function ChangePage(page) {
 
 
 function DeleteTask(id) {
-    if(confirm("Bạn có chắc muốn xóa task này không?")) {
+    if(confirm("Bạn có chắc muốn xóa công việc này không?")) {
         fulltask = fulltask.filter((task) => task.id !== parseInt(id));
         localStorage.setItem("fulltask", JSON.stringify(fulltask));
         const totalPage = Math.ceil(fulltask.length / taskPerPage);
@@ -114,7 +114,7 @@ function DeleteTask(id) {
 }
 
 function DeleteAllTask() {
-    if(confirm("Bạn có chắc muốn xóa hết các task?")) {
+    if(confirm("Bạn có chắc muốn xóa hết các công việc?")) {
         fulltask = [];
         localStorage.setItem("fulltask", JSON.stringify(fulltask));
         const totalPage = Math.ceil(fulltask.length / taskPerPage);
@@ -146,7 +146,7 @@ function createPagi(filteredTasks) {
 
     let pagi = "";
     if(currentPagePagi > 1) {
-        pagi += `<button type="button" id="prev" class="btn btn-outline-primary m-3" href="#" onclick="currentPagePagi = ${currentPagePagi - 1}; ShowTask()">Previous</button>`;
+        pagi += `<button type="button" id="prev" class="btn btn-outline-primary m-3" href="#" onclick="currentPagePagi = ${currentPagePagi - 1}; ShowTask()">Trang trước</button>`;
     }
 
     for(let i =1; i<= totalPage; i++) {
@@ -158,7 +158,7 @@ function createPagi(filteredTasks) {
     }
 
     if(currentPagePagi < totalPage) {
-        pagi += `<button type="button" id="nex" class="btn btn-outline-primary m-3" href="#" onclick="currentPagePagi = ${currentPagePagi + 1}; ShowTask()">Next</button>`;
+        pagi += `<button type="button" id="nex" class="btn btn-outline-primary m-3" href="#" onclick="currentPagePagi = ${currentPagePagi + 1}; ShowTask()">Trang tiếp</button>`;
     }
 
     pagination.innerHTML = pagi;
