@@ -611,7 +611,7 @@ function saveUser() {
     const getPassSU = document.getElementById("password_su").value.trim();
 
     if(getFirstName === "" || getLastName === "" || getEmailSU === "" || getPassSU === "") {
-        alert("Hãy nhập đầy đủ thông tin!");
+        alert("Hãy nhập đầy đủ thông tin");
         return;
     }
     else if (users.some(user => user.email === getEmailSU)) {
@@ -629,7 +629,7 @@ function saveUser() {
     }
 
     users.push(user);
-    alert("Đã thêm user mới");
+    alert("Đã thêm người dùng mới");
     
 	document.getElementById("firstname_su").value = "";
 	document.getElementById("lastname_su").value = "";
@@ -733,6 +733,7 @@ function showPosts() {
 	});
 	getPost.innerHTML = rs;
 	createPagi();
+	document.getElementById("listsearch").style.display = "none";
 }
 
 
@@ -816,19 +817,21 @@ function searchPosts() {
 	resultSearch.style.display = "table-row-group";
 
     if (!valueSearch) {
-        alert("Vui lòng nhập email!");
+        alert("Vui lòng nhập email để tìm kiếm");
         return;
     }
 
     const user = users.find(u => u.email.toLowerCase() === valueSearch);
     if (!user) {
-        alert("Không tìm thấy user với email này!");
+        alert("Không tìm thấy bài viết nào với email này!");
+		document.getElementById("searchUserEmail").value = "";
+		document.getElementById("headlistpost").style.display = "none";
         return;
     }
 
     const userPosts = posts.filter(post => post.user_id === user.id);
     if (userPosts.length === 0) {
-        alert("User này không có bài viết!");
+        alert("Người dùng này không có bài viết!");
         return;
     }
 

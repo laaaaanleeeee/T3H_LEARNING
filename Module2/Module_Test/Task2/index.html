@@ -153,9 +153,9 @@
     <div id="showpost" class="container-fluid d-flex justify-content-center align-content-center">
         <div id="postform">
             <h1 class="text-center"><b>Danh sách các bài viết</b></h1>
-            <div class="row d-flex gap-5 container">
-                <button class="btn btn-primary col  mt-5" type="button" onclick="showPosts()">Xem danh sách</button>
-                <button class="btn btn-primary col  mt-5" type="button" onclick="turnOffListPosts()">Tắt danh sách</button>
+            <div class="row d-flex gap-3 container">
+                <button class="btn btn-primary col-5  mt-5" type="button" onclick="showPosts()">Xem danh sách</button>
+                <button class="btn btn-primary col-5  mt-5" type="button" onclick="turnOffListPosts()">Tắt danh sách</button>
                 <select class="form-select col  mt-5" id="chooseop" onchange="ChangePostPerPage()">
                     <option value="5" selected>Hiển thị 5</option>
                     <option value="10">Hiển thị 10</option>
@@ -163,10 +163,10 @@
                     <option value="20">Hiển thị 20</option>
                 </select>
             </div>
-            <div class="input-group row d-flex mt-3 container">
-                    <span class="input-group-text col-1" id="basic-addon1">Tìm kiếm</span>
-                    <input type="email" id="searchUserEmail" class="form-control col-10" placeholder="Nhập email user...">
-                    <button class="btn btn-primary col-1" type="button" onclick="searchPosts()">Tìm kiếm</button>
+            <div class="input-group row d-flex mt-3 gap-3 container">
+                    <span class="input-group-text col-3" id="basic-addon1">Tìm kiếm bài viết theo email người tạo</span>
+                    <input type="email" id="searchUserEmail" class="form-control col-7" placeholder="Nhập email user...">
+                    <button class="btn btn-primary col-2" type="button" onclick="searchPosts()">Tìm kiếm</button>
             </div>
             
             <table class="table table-success table-striped mt-5">
