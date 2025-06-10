@@ -631,6 +631,11 @@ function checkLogin() {
 }
 
 
+function changeScreen() {
+	document.getElementById("loginform").style.display = "block";
+	document.getElementById("signupform").style.display = "none";
+}
+
 
 function changeScreenLogin() {
 	if(isSignUp === true) {
