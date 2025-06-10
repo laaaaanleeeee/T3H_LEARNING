@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+
+    <style>
+        #loginform,
+        #signupform,
+        #showuserform,
+        #postform {
+            width: 80%;
+            height: 50%;
+            margin-top: 10vh;
+            padding: 5%;
+            background-color: darkturquoise;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            color: #888;
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .modal-content {
+            max-width: 1000px;
+        }
+
+        #pagination[style*="display: none"] {
+            display: none !important;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="signup" class="container-fluid d-flex justify-content-center align-content-center">
+        <div id="signupform">
+            <h1 class="text-center"><b>Đăng ký</b></h1>
+            <div class="mb-3 mt-5">
+                <label for="firstname_su" class="form-label"><b>Tên</b></label>
+                <input type="text" class="form-control" id="firstname_su" placeholder="Nhập vào tên của bạn...">
+            </div>
+            <div class="mb-3">
+                <label for="lastname_su" class="form-label"><b>Họ</b></label>
+                <input type="text" class="form-control" id="lastname_su" placeholder="Nhập vào họ của bạn...">
+            </div>
+            <div class="mb-3">
+                <label for="email_su" class="form-label"><b>Email</b></label>
+                <input type="email" class="form-control" id="email_su" placeholder="Nhập vào email của bạn...">
+            </div>
+            <div class="mb-3">
+                <label for="password_su" class="form-label"><b>Mật khẩu</b></label>
+                <input type="text" class="form-control" id="password_su" placeholder="Nhập vào mật khẩu của bạn...">
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                <button id="mySUBtn" class="btn btn-primary" onclick="saveUser()">Đăng ký</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="login" class="container-fluid d-flex justify-content-center align-content-center">
+        <div id="loginform">
+            <h1 class="text-center"><b>Đăng nhập</b></h1>
+            <div class="mb-3 mt-5">
+                <label for="email" class="form-label"><b>Email</b></label>
+                <input type="email" class="form-control" id="email" placeholder="Nhập vào email của bạn...">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label"><b>Mật khẩu</b></label>
+                <input type="password" class="form-control" id="password" placeholder="Nhập vào mật khẩu của bạn...">
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                <button id="myBtn" class="btn btn-primary" onclick="checkLogin()">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="showuser" class="container-fluid d-flex justify-content-center align-content-center">
+        <div id="showuserform">
+            <h1 class="text-center"><b>Lọc danh sách người dùng theo từ khóa</b></h1>
+            <div class="input-group mb-3 mt-5">
+                <input type="text" class="form-control" id="inputkeyword" placeholder="Nhập vào từ khóa...">
+            </div>
+
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="button" id="button-addon2" onclick="filterUser()">Lọc người dùng</button>
+                <button class="btn btn-primary" type="button" onclick="turnOffListUser()">Tắt danh sách</button>
+            </div>
+
+            <table  class="table table-success table-striped mt-5">
+                <thead id="headlist" style="display: none;">
+                    <th>ID</th>
+                    <th>Họ và tên</th>
+                    <th>Email</th>
+                </thead>
+
+                <tbody id="userfiltered">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div id="showpost" class="container-fluid d-flex justify-content-center align-content-center">
+        <div id="postform">
+            <h1 class="text-center"><b>Danh sách các bài viết</b></h1>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary  mt-5" type="button" onclick="showPosts()">Xem danh sách</button>
+                <select class="form-select" id="chooseop" onchange="ChangePostPerPage()">
+                    <option value="5" selected>Hiển thị 5</option>
+                    <option value="10">Hiển thị 10</option>
+                    <option value="15">Hiển thị 15</option>
+                    <option value="20">Hiển thị 20</option>
+                </select>
+                <div class="input-group">
+                    <input type="email" id="searchUserEmail" class="form-control" placeholder="Nhập email user...">
+                    <button class="btn btn-primary" type="button" onclick="searchPosts()">Tìm kiếm</button>
+                </div>
+                <button class="btn btn-primary" type="button" onclick="turnOffListPosts()">Tắt danh sách</button>
+                
+            </div>
+            
+            <table class="table table-success table-striped mt-5">
+                <thead id="headlistpost" style="display: none;">
+                    <th>ID</th>
+                    <th>Tiêu đề</th>
+                    <th>Ngày tạo</th>
+                    <th>Họ tên người tạo</th>
+                    <th>Chi tiết</th>
+                </thead>
+
+                <tbody id="listposts">
+
+                </tbody>
+            </table>
+
+
+            <table class="table table-success table-striped">
+                <tbody id="listsearch">
+
+                </tbody>
+            </table>
+
+            <div class="pagination d-flex justify-content-center" id="pagination"> 
+
+            </div> 
+        </div>
+    </div>
+
+
+    <div class="modal" id="postModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                    
+                <div class="modal-header">
+                    <h4 class="modal-title">Chi tiết bài viết</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                    
+                <div class="modal-body">
+                    <ul id="postdetail">
+
+                    </ul>
+                </div>
+                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    <script src="./main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

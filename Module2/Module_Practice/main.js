@@ -2,6 +2,11 @@ let currentPage = 1;
 let stuPerPage = 5;
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
+function changeStuPerPage() {
+    stuPerPage = parseInt(document.getElementById("chooseop").value)
+    currentPage = 1;
+    loadData();
+}
 
 function createPagi() {
     const pagination = document.getElementById("pagination");
@@ -9,44 +14,55 @@ function createPagi() {
 
     let pagi = "";
     if(currentPage > 1) {
-        pagi += `<a href="#" id="pagi" onclick="currentPage = ${currentPage - 1}; loadData()">Previous</a>`;
+        pagi += `<button type="button" id="prev" class="btn btn-outline-primary m-3" href="#" onclick="currentPage = ${currentPage - 1}; loadData()">Previous</button>`;
     }
 
     for(let i =1; i<= totalPage; i++) {
-        pagi += `<a href="#" id="pagi" onclick="currentPage = ${i}; loadData()">${i}</a>`;
+        if (i === currentPage) {
+            pagi += `<button type="button" id="paginow" class="btn btn-outline-primary m-3 active" href="#" onclick="currentPage = ${i}; loadData()">${i}</button>`;
+        } else {
+            pagi += `<button type="button" id="paginow" class="btn btn-outline-primary m-3" href="#" onclick="currentPage = ${i}; loadData()">${i}</button>`;
+        }
     }
 
     if(currentPage < totalPage) {
-        pagi += `<a href="#" id="pagi" onclick="currentPage = ${currentPage + 1}; loadData()">Next</a>`;
+        pagi += `<button type="button" id="nex" class="btn btn-outline-primary m-3" href="#" onclick="currentPage = ${currentPage + 1}; loadData()">Next</button>`;
     }
 
     pagination.innerHTML = pagi;
+
+
 }
 
 
+
 function saveData() {
-    const getId = document.getElementById("idstu").value.trim();
+    const newId = users.length > 0 ? parseInt(users[users.length - 1].id) + 1 : 1;
     const getName = document.getElementById("name").value.trim();
     const getGender = document.getElementById("gender").value.trim();
     const getMath = parseFloat(document.getElementById("math").value.trim());
     const getEnglish = parseFloat(document.getElementById("english").value.trim());
     const getLiterature = parseFloat(document.getElementById("literature").value.trim());
-    const averageScore = (getMath + getEnglish + getLiterature) / 3;
+
+    if(getMath < 0 || getMath > 10 || getEnglish < 0 || getEnglish > 10 || getLiterature < 0 || getLiterature > 10) {
+        alert("Vui lòng nhập lại số điểm!");
+    }
 
     const user = {
-        id: getId,
+        id: newId,
         name: getName,
         gender: getGender,
         math_score: getMath,
         english_score: getEnglish,
         literature_score: getLiterature,
-        average_score: averageScore,
+        average_score: (getMath + getEnglish + getLiterature) / 3,
     };
 
     users.push(user);
 
     localStorage.setItem("users", JSON.stringify(users));
 
+    currentPage = Math.ceil(users.length / stuPerPage);
     loadData();
 }
 
@@ -57,23 +73,22 @@ function turnOffUpdate() {
 }
 
 function confirmUpdate(id) {
-    const idCurrentUser = users.findIndex((u) => u.id === id);
+    const indexCurrentUser = users.findIndex((u) => u.id === parseInt(id));
 
     const nName = document.getElementById("newName").value.trim();
     const nGender = document.getElementById("newGender").value.trim();
     const nMath = parseFloat(document.getElementById("newMath").value.trim());
     const nEnglish = parseFloat(document.getElementById("newEnglish").value.trim());
     const nLiterature = parseFloat(document.getElementById("newLiterature").value.trim());
-    const nAverageScore = (nMath + nEnglish + nLiterature) / 3;
 
-    users[idCurrentUser] = {
+    users[indexCurrentUser] = {
         id: id,
         name: nName,
         gender: nGender,
         math_score: nMath,
         english_score: nEnglish,
         literature_score: nLiterature,
-        average_score: nAverageScore,
+        average_score: (nMath + nEnglish + nLiterature) / 3,
     };
 
     localStorage.setItem("users", JSON.stringify(users));
@@ -81,22 +96,26 @@ function confirmUpdate(id) {
 }
 
 function deleteUser(id) {
-    const currentUser = users.filter((user) => user.id !== id);
+    if(confirm("Bạn có chắc chắn muốn xóa?")) {
+        users = users.filter((user) => user.id !== parseInt(id));
 
-    localStorage.setItem("users", JSON.stringify(currentUser));
-    loadData();
+        localStorage.setItem("users", JSON.stringify(users));
+        const totalPage = Math.ceil(users.length / stuPerPage);
+
+        if(currentPage > totalPage) {
+            currentPage = totalPage;
+        }
+
+        loadData();
+    }
 }
 
 function showUpdate(id) {
     const change = document.getElementById("areachange");
 
-    const user = users.find((u) => u.id === id);
+    const user = users.find((u) => u.id === parseInt(id));
 
-    if (change.style.display === "none") {
-        change.style.display = "block";
-    } else {
-        change.style.display = "none";
-    }
+    change.style.display = "block";
 
     change.innerHTML = `
                 <div class="d-flex flex-column justify-content-center align-content-center m-5">
@@ -157,42 +176,46 @@ function loadData() {
 
     getResult.innerHTML = result;
     createPagi();
+
+    document.getElementById("name").value = "";
+    document.getElementById("gender").value = "";
+    document.getElementById("math").value = "";
+    document.getElementById("english").value = "";
+    document.getElementById("literature").value = "";
 }
 
 function searchUsers() {
     const getSearchValue = document.getElementById("search_value").value.trim();
     const getResult = document.getElementById("resultLoad");
-    const userFinded = users.filter((u) => u.name === getSearchValue);
+    const userFinded = users.filter((u) => u.name.toLowerCase().includes(getSearchValue) || u.gender.toLowerCase().includes(getSearchValue));
 
-    if (userFinded) {
-        let result = "";
+    if (userFinded.length == 0) {
+        getResult.innerHTML = `<tr><td colspan="8" class="text-center">Không tìm thấy kết quả phù hợp.</td></tr>`;
+        return;
+    }
+
+    let result = "";
         userFinded.forEach((user) => {
-        result += `
-                        <tr>
-                            <td>${user.id}</td>
-                            <td>${user.name}</td>
-                            <td>${user.gender}</td>
-                            <td>${user.math_score}</td>
-                            <td>${user.english_score}</td>
-                            <td>${user.literature_score}</td>
-                            <td>${user.average_score.toFixed(2)}</td>
-                            <td>
-                                <button type="button" class="btn btn-success" onclick="showUpdate('${
-                                user.id
-                                }')">Update</button>
-                                <button type="button" class="btn btn-danger" onclick="deleteUser('${
-                                user.id
-                                }')">Delete</button>
-                            </td>
-                        </tr>
-                    `;
+            result += `
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.gender}</td>
+                    <td>${user.math_score}</td>
+                    <td>${user.english_score}</td>
+                    <td>${user.literature_score}</td>
+                    <td>${user.average_score.toFixed(2)}</td>
+                    <td>
+                        <button type="button" class="btn btn-success" onclick="showUpdate('${user.id}')">Update</button>
+                        <button type="button" class="btn btn-danger" onclick="deleteUser('${user.id}')">Delete</button>
+                    </td>
+                </tr>
+            `;
         });
         getResult.innerHTML = result;
-    }
 }
 
 
 window.onload = function () {
     loadData();
 }
-

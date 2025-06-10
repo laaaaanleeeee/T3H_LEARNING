@@ -20,25 +20,56 @@
         #pagi {
             margin: 10px;
         }
+        #pagination .active  {
+            background-color: #0d6efd;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <div id="container" class="d-flex flex-column justify-content-center align-content-center m-5">
+    <div id="container" class="d-flex flex-column justify-content-center align-content-center mb-5">
         <div id="student" class="d-flex flex-column justify-content-center align-content-center m-5">
-            <input type="number" name="idstu" id="idstu" placeholder="Enter your id...">
-            <input type="text" name="name" id="name" placeholder="Enter your name...">
-            <input type="text" name="gender" id="gender" placeholder="Enter your gender...">
-            <input type="number" name="math" id="math" placeholder="Enter your math score...">
-            <input type="number" name="english" id="english" placeholder="Enter your english...">
-            <input type="number" name="literature" id="literature" placeholder="Enter your literature...">
-            <button type="button" id="create" class="btn btn-primary" onclick="saveData()">Create Student</button>
+            <h1>Thêm mới sinh viên</h1>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="name" placeholder="Tên sinh viên">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="gender" placeholder="Giới tính">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="math" placeholder="Điểm Toán">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="english" placeholder="Điểm Anh">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="literature" placeholder="Điểm Văn">
+                </div>
+                <div class="col-md-4 d-grid">
+                    <button type="button" class="btn btn-primary" onclick="saveData()">Thêm Sinh Viên</button>
+                </div>
+            </div>
         </div>
 
 
         <div id="main" class="d-flex flex-column justify-content-center align-content-center m-5">
-            <div id="search_bar" class="d-flex justify-content-center align-content-center">
-                <input type="text" name="search" id="search_value" placeholder="Enter your search...">
-                <button type="button" class="btn btn-primary" onclick="searchUsers()">Search</button>
+            <h1>Danh sách sinh viên</h1>
+            <div class="row g-3 align-items-center mb-3">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="search_value" placeholder="Tìm kiếm theo tên hoặc giới tính">
+                </div>
+                <div class="col-md-2 d-grid">
+                    <button class="btn btn-primary" onclick="searchUsers()">Tìm kiếm</button>
+                </div>
+                <div class="col-md-3 offset-md-2">
+                    <select class="form-select" id="chooseop" onchange="changeStuPerPage()">
+                        <option value="5" selected>Hiển thị 5</option>
+                        <option value="10">Hiển thị 10</option>
+                        <option value="15">Hiển thị 15</option>
+                        <option value="20">Hiển thị 20</option>
+                    </select>
+                </div>
             </div>
 
             <div id="areachange" class="d-flex flex-column justify-content-center align-content-center">
@@ -46,28 +77,26 @@
             </div>
             
             <div id="result">
-                <table class="table">
+                <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>#ID</th>
-                            <th>Name</th>
-                            <th>Gender</th>
-                            <th>Math</th>
-                            <th>English</th>
-                            <th>Literature</th>
-                            <th>Average score</th>
-                            <th>Actions</th>
+                            <th>Tên</th>
+                            <th>Giới tính</th>
+                            <th>Toán</th>
+                            <th>Anh</th>
+                            <th>Văn</th>
+                            <th>Điểm TB</th>
+                            <th>Thao tác</th>
                         </tr>
                     </thead>
-                    <tbody id="resultLoad">
-                        
-                    </tbody>
+                    <tbody id="resultLoad"></tbody>
                 </table>
             </div>
         </div>
 
 
-        <div class="pagination d-flex justify-content-center align-content-center" id="pagination"> 
+        <div class="pagination d-flex justify-content-center" id="pagination"> 
 
         </div> 
     </div>
