@@ -1,30 +1,54 @@
-.header {
+#header {
     display: flex;
     justify-content: center;
-    margin-top: 5vh;
+    width: 100vw;
+    height: 5vh;
+    background-color: #fff2d9;
+    position: fixed;
+    padding: 2%;
+    top: 0;
+    left: 0;
 }
 
-.header .button_rightside {
+.two_buttons {
+  display: flex;
+}
+
+.button_download {
+  cursor: pointer;
+}
+
+.button_download:hover {
+  background-color: black;
+  color: white;
+}
+
+#header .button_rightside {
   margin-left: 20rem;
 }
 
-.header .button_rightside:hover {
+#header .button_rightside:hover {
   background-color: white;
-  border-radius: 10%;
+  border-radius: 25px;
 }
 
-.header .button_header_last {
+#header .button_header_last {
   background-color: darkslateblue;
   color: white;
-  border-radius: 10%;
+  border-radius: 25px;
 }
 
-.header .button_header_last:hover {
+#header .button_header_last:hover {
   background-color: white;
   color: black;
 }
 
-.button_header:hover {
+#header button a {
+  text-decoration: none;
+  color: black;
+}
+
+#header button a:hover {
   color: green;
 }
 
@@ -37,30 +61,44 @@ button {
 }
 
 .content {
-  margin-top: 5rem;
+  width: 100vw;
+}
+
+#home {
+  margin-top: 12vh;
+  padding-top: 5rem;
   display: flex;
+  justify-content: center;
+  background-color: #fff2d9;
 }
 
 .leftside {
   margin-right: 10rem;
+  height: fit-content;
+  width: fit-content;
+}
+
+.rightside {
+  height: fit-content;
+  width: fit-content;
 }
 
 .rightside .logo {
-  width: 29rem;
-  height: 35rem;
+  width: 30vw;
+  height: 60vh;
 }
 
-.content h1 {
+.leftside h1 {
   width: 450px;
   font-size: 50px;
 }
 
-.content p {
+.leftside p {
   font-size: larger;
 }
 
 .searchaddress {
-  margin-top: 5vh;
+  padding-top: 5vh;
   display: flex;
   height: 4rem;
 }
@@ -75,9 +113,10 @@ button {
   color: white;
 }
 
-.download {
+#download {
   display: flex;
-  margin-top: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .button_download {
@@ -85,6 +124,7 @@ button {
   margin: 0;
   border: 1px solid black;
   margin-right: 3rem;
+  border-radius: 25px;
 }
 
 .button_download p {
@@ -95,3 +135,483 @@ button {
 .title_download {
   margin-left: 1rem;
 }
+
+
+#restaurants {
+  background-color: white;
+  width: 100vw;
+}
+
+.part1res,
+.part2_res h1,
+.part3res {
+  text-align: center;
+  margin-top: 10vh;
+}
+
+.list_restaurant {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.list {
+  padding: 1%;
+}
+
+.list img {
+  border-radius: 25px;
+  width: 25vw;
+  height: 30vh;
+}
+
+.list h3 {
+  font-size: larger;
+}
+
+.list h3:hover {
+  color: cornflowerblue;
+  cursor: pointer;
+}
+
+.discover {
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+}
+
+.catego a {
+  font-size: larger;
+  color: black;
+  text-decoration: none;
+}
+
+.catego a:hover {
+  color: #2abd98;
+  cursor: pointer;
+}
+
+.part2_res {
+    display: flex;
+    justify-content: center;
+}
+
+.detail_part2 {
+  width: 80vw;
+}
+
+.button_discover {
+  background-color: #2abd98;
+  color: white;
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+
+.list_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.list_button button {
+  background-color: lightgray;
+  color: black;
+  display: flex;
+  justify-content: center;
+  width: 8vw;
+  height: 5vh;
+  border-radius: 25px;
+  text-align: center;
+  align-items: center;
+}
+
+.list_button button:hover {
+  background-color: #2abd98;
+  color: white;
+  cursor: pointer;
+}
+
+.buton_cato {
+  margin: 1%;
+}
+
+.list_work {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.work {
+  width: 20%;
+  padding: 4%;
+}
+
+.work a {
+  text-decoration: none;
+  padding-top: 5%;
+}
+
+.link_work,
+.title_work,
+.work h3 {
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  text-align: center;
+  padding: 1%;
+}
+
+.img_work {
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+  width: 20vw;
+  height: 20vh;
+}
+
+.rescando {
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.logocando {
+  display: flex;
+  width: 35%;
+  margin-right: 5%;
+  background-color: #fff2d9;
+  border-radius: 25px;
+}
+
+.detail_cando {
+  width: 40%;
+}
+
+.detail_cando h1 {
+  font-size: 40px;
+  text-align: start;
+}
+
+.detail_cando p {
+  font-size: larger;
+}
+
+.step {
+  display: flex;
+}
+
+.step p {
+  font-size: larger;
+}
+
+.step h1 {
+  padding-right: 5%;
+}
+
+#features {
+  background-color: #def8f5;
+}
+
+#features h1 {
+  text-align: center;
+  padding-top: 5%;
+  margin-top: 5%;
+}
+
+.detail_feature {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.img_feature {
+  display: flex;
+  justify-content: center;
+}
+
+.img_feature img {
+  width: 8rem;
+}
+
+.feature {
+  width: 20%;
+  padding: 3%;
+}
+
+.feature h2 {
+  text-align: center;
+}
+
+.feature p {
+  text-align: center;
+  font-size: larger;
+}
+
+#testimonials h2 {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.list_testi {
+  display: flex;
+  justify-content: center;
+}
+
+.img_testi {
+  width: 5%;
+  padding: 3%;
+}
+
+.aboutus_testi {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+.content_aboutus {
+  width: 30%;
+  margin-right: 5%;
+}
+
+.content_aboutus h1 {
+  font-size: 35px;
+  margin-top: 5vh;
+}
+
+.content_aboutus p {
+  font-size: 25px;
+  font-weight: lighter;
+}
+
+.img_content_testi {
+  display: flex;
+  width: 30%;
+}
+
+.img_content_testi img {
+    width: 50vw;
+    height: 50vh;
+    background-color: #fff2d9;
+  border-radius: 25px;
+}
+
+.list_member,
+.member {
+  display: flex;
+}
+
+.member {
+  margin-right: 5vw;
+}
+
+.member img {
+  width: 50px;
+}
+
+.title_member p {
+  font-size: smaller;
+}
+
+#download {
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.img_download img {
+  width: 30vw;
+  height: 50vh;
+  background-color: #fff2d9;
+  border-radius: 25px;
+}
+
+.content_download {
+  width: 30vw;
+  margin-left: 5vw;
+}
+
+.content_download .two_buttons .button_download {
+  background-color: black;
+  color: white;
+  margin-top: 5vh;
+}
+
+.content_download h1 {
+  font-size: 40px;
+}
+
+.list_img_exper {
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+}
+
+.list_img_exper img {
+  width: 250px;
+  height: 370px;
+  padding: 1%;
+  margin: 1%;
+  background-color: #fff2d9;
+  border-radius: 25px;
+}
+
+.list_img_exper .imgeven {
+  margin-top: 8vh;
+}
+
+
+
+.content_delivery {
+  text-align: center;
+  margin-top: 10vh;
+  max-width: 50vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content_delivery p {
+  font-size: larger;
+}
+
+#order_more {
+  display: flex;
+  margin-top: 10vh;
+  justify-content: center;
+  background-color: #fff2d9;
+  max-width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+  padding: 1%;
+}
+
+
+.img_order_more {
+  width: 30vw;
+  padding: 5%;
+}
+
+.content_order_more {
+  width: 30vw;
+  font-size: larger;
+  margin-top: 10vh;
+}
+
+.button_order_more {
+  background-color: #2abd98;
+  padding: 3%;
+  margin-left: 0;
+  border-radius: 25px;
+  margin-top: 5vh;
+  cursor: pointer;
+}
+
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  font-size: larger;
+}
+
+.img_footer {
+  position: relative;
+  width: 10vw;
+  height: 30px;
+  background-color: #fff2d9;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#footer p {
+  margin-left: 2%;
+}
+
+#footer p, #footer a {
+  margin-right: 1%;
+}
+
+#footer button {
+  background-color: white;
+}
+
+#footer button:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.img_social {
+  padding: 5px;
+  cursor: pointer;
+}
+
+
+body {
+  margin: 0;
+}
+
+/* #booking_table {
+  margin: 0;
+  padding: 0;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form_booking {
+  position: relative;
+  max-width: 45vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.form_booking h1, .form_booking p {
+  text-align: center;
+}
+
+.enter_value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftside_form, .rightside_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.leftside_form input, .rightside_form input {
+  padding: 3%;
+  width: 20vw;
+  margin-bottom: 5%;
+}
+
+
+.check {
+  display: flex;
+  font-size: larger;
+  margin-bottom: 5%;
+}
+
+.form_booking button {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: orange;
+  color: white;
+  padding: 3%;
+  cursor: pointer;
+} */
