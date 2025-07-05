@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <>
-        <header className="bg-white shadow-md p-2">
+        <header className="fixed top-0 left-0 w-full bg-white shadow-md p-2 z-50">
             <div className="container mx-auto px-4 py-3 flex items-center justify-between">
                 <nav className="space-x-10">
                     <NavLink to="/" className={({ isActive }) =>
@@ -18,7 +18,7 @@ const Header = () => {
                         isActive ? "text-orange-600 border-b-2 pb-2" : "hover:text-orange-600"}>
                         <b>Thực đơn</b>
                     </NavLink>
-                    <NavLink to="/about_us" className={({ isActive }) =>
+                    <NavLink to="/about" className={({ isActive }) =>
                         isActive ? "text-orange-600 border-b-2 pb-2" : "hover:text-orange-600"}>
                         <b>Về chúng tôi</b>
                     </NavLink>
