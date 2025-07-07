@@ -37,10 +37,11 @@ const Header = () => {
                         <input className='outline-none border-none' type='text' placeholder='Tìm kiếm món ăn'></input>
                         <SearchOutlined className='mt-2' />
                     </div>
-                    <div className='flex items-center cursor-pointer'>
+                    <NavLink to="/login" className={({ isActive }) =>
+                        isActive ? "text-orange-600 border-b-2 pb-2" : "hover:text-orange-600"}>
                         <UserOutlined className='mr-2'/>
                         <span>Tài khoản</span>
-                    </div>
+                    </NavLink>
                     <div className='flex items-center justify-between'>
                         <button type='button' className='cursor-pointer'><ShoppingCartOutlined /></button>
                     </div>

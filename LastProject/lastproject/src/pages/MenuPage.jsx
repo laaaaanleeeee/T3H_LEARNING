@@ -38,14 +38,12 @@ const MenuPage = () => {
 
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [modalText, setModalText] = useState('Content of the modal');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const showModal = (product) => {
     setSelectedProduct(product);
     setOpen(true);
   };
   const handleOk = () => {
-    setModalText('The modal will be closed after two seconds');
     setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
