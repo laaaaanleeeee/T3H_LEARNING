@@ -2,9 +2,14 @@ import React from 'react'
 import Video from "../assets/Food Promo Video - Manual Mode Productions - Manual Mode Productions (1080p, h264).mp4"
 import BackgroundImage from "../assets/pexels-valeriya-1639562.jpg";
 import { PlusOutlined } from '@ant-design/icons';
+import { useTheme } from "../hook/useTheme";
 
 
 const AboutUs = () => {
+  const { theme } = useTheme();
+  
+  const bgClass = theme === 'dark' ? 'bg-black' : 'bg-gray-100';
+
   return (
     <div className='w-full'>
       <div className='flex p-30'>
@@ -79,7 +84,7 @@ const AboutUs = () => {
       </div>
 
 
-      <div className="w-full bg-gray-100 py-20">
+      <div className={`w-full ${bgClass} py-20`}>
         <p className="text-center text-4xl font-semibold mb-16">DỊCH VỤ CUNG CẤP</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 max-w-6xl mx-auto px-20">

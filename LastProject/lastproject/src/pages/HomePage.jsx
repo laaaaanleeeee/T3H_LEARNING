@@ -13,6 +13,8 @@ import { InputNumber, DatePicker } from 'antd';
 import HomeCarousel from '../components/HomeCarousel';
 import StepBooking from '../components/StepBooking';
 import ReasonChooseUs from '../components/ReasonChooseUs';
+import { useTheme } from "../hook/useTheme";
+
 
 const onChange = value => {
   console.log('changed', value);
@@ -21,6 +23,13 @@ const onChange = value => {
 
 
 const HomePage = () => {
+  const { theme } = useTheme();
+
+  const bgClass1 = theme === 'dark' ? 'bg-black' : 'bg-gray-100';
+  const bgClass2 = theme === 'dark' ? 'bg-black' : 'bg-gray-200';
+
+
+  
   return (
     <>
       <Carousel autoplay className="w-full pt-20">
@@ -31,7 +40,7 @@ const HomePage = () => {
 
 
 
-      <div className='bg-gray-100 pt-10 pb-10'>
+      <div className={`pt-10 pb-10 ${bgClass1}`}>
         <div className='container mx-auto flex flex-col md:flex-row justify-center items-center gap-8 px-4'>
 
           <div className='text-lg flex flex-col p-5 max-w-xl'>
@@ -109,7 +118,7 @@ const HomePage = () => {
 
 
 
-      <div className='w-full p-10 bg-gray-100 flex flex-col md:flex-row flex-wrap justify-center items-start gap-8'>
+      <div className={`w-full p-10 ${bgClass1} flex flex-col md:flex-row flex-wrap justify-center items-start gap-8`}>
 
         <div className='flex flex-col gap-5 mt-10 mb-10'>
 
@@ -147,7 +156,7 @@ const HomePage = () => {
 
 
 
-      <div className="w-full px-6 py-16 bg-white">
+      <div className={`w-full px-6 py-16 ${bgClass2}`}>
         <p className="text-center text-4xl font-semibold mb-12">VÌ SAO LỰA CHỌN CHÚNG TÔI</p>
 
         <div className="flex flex-wrap justify-center gap-5">
