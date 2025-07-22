@@ -19,7 +19,7 @@ const AboutUs = () => {
         </div>
 
         <div className='flex flex-col justify-center items-start '>
-          <video className='w-[900px] h-screen object-cover rounded' autoPlay muted loop>
+          <video className='w-[900px] h-screen object-cover rounded' controls muted loop>
             <source src={Video} type='video/mp4' />
           </video>
 

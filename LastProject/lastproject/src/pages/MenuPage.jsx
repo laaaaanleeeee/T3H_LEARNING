@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { Card, Button, ConfigProvider, Space, Pagination, Modal } from 'antd';
-const { Meta } = Card;
+import React, { useEffect, useState } from 'react';
+import { Card, Button, ConfigProvider, Space, Pagination, Modal, Input, Select } from 'antd';
+import { FaCartPlus } from "react-icons/fa6";
 import { createStyles } from 'antd-style';
-import { Input, Select } from 'antd';
+import { Rate } from 'antd';
 
+const { Meta } = Card;
 const { Search } = Input;
 
 const MenuPage = () => {
   const { styles } = useStyle();
   const [currentPage, setCurrentPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const pageSize = 5;
+  const pageSize = 15;
+  const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -19,13 +21,11 @@ const MenuPage = () => {
   const [sortValue, setSortValue] = useState('');
   const [sortOrder, setSortOrder] = useState('');
 
-
   const showModal = async (product) => {
     setOpen(true);
     const response = await fetch(`https://dummyjson.com/products/${product.id}`);
     const data = await response.json();
     setSelectedProduct(data);
-
   };
 
   const handleOk = () => {
@@ -36,10 +36,7 @@ const MenuPage = () => {
     }, 0);
   };
 
-  const handleCancel = () => {
-    console.log('Clicked cancel button');
-    setOpen(false);
-  };
+  const handleCancel = () => setOpen(false);
 
   const handleChange = (value) => {
     if (value === 'asc') {
@@ -52,73 +49,66 @@ const MenuPage = () => {
       setSortValue('');
       setSortOrder('');
     }
+    setCurrentPage(1);
   };
 
   const onSearch = (value) => {
     setSearchValue(value);
     setCurrentPage(1);
-  }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAll = async () => {
       try {
-        let url = 'https://dummyjson.com/products';
-
-        if (searchValue) {
-          url = `https://dummyjson.com/products/search?q=${searchValue}`;
-        }
-
-        const response = await fetch(url);
-        const data = await response.json();
-
-        let allProducts = data.products;
-
-        if (sortValue && sortOrder) {
-          allProducts = allProducts.sort((a, b) => {
-            if (sortOrder === 'asc') return a[sortValue] - b[sortValue];
-            else return b[sortValue] - a[sortValue];
-          });
-        }
-
-        const start = (currentPage - 1) * pageSize;
-        const end = start + pageSize;
-        const pagedProducts = allProducts.slice(start, end);
-
-        setProducts(pagedProducts);
-        setTotal(allProducts.length);
+        const res = await fetch(`https://dummyjson.com/products?limit=194`);
+        const data = await res.json();
+        setAllProducts(data.products);
+        setTotal(data.total);
       } catch (error) {
-        console.error('Error fetching data: ', error);
+        console.error('Lỗi fetch dữ liệu:', error);
       }
     };
+    fetchAll();
+  }, []);
 
-    fetchData();
-  }, [currentPage, searchValue, sortValue, sortOrder]);
+  useEffect(() => {
+    let filtered = [...allProducts];
 
+    if (searchValue) {
+      filtered = filtered.filter(p =>
+        p.title.toLowerCase().includes(searchValue.toLowerCase())
+      );
+    }
 
+    if (sortValue && sortOrder) {
+      filtered.sort((a, b) =>
+        sortOrder === 'asc' ? a[sortValue] - b[sortValue] : b[sortValue] - a[sortValue]
+      );
+    }
+
+    const start = (currentPage - 1) * pageSize;
+    const end = start + pageSize;
+
+    setProducts(filtered.slice(start, end));
+    setTotal(filtered.length);
+  }, [currentPage, searchValue, sortValue, sortOrder, allProducts]);
 
   return (
-
-
     <div className='w-full pt-30'>
       <p className='text-5xl text-center'>DANH SÁCH SẢN PHẨM</p>
-
       <div className='flex flex-col justify-center items-center mt-20'>
-        <div>
-          <Search style={{ width: 500 }} placeholder="Nhập từ khoá..." onSearch={onSearch} enterButton />
-        </div>
+        <Search style={{ width: 500 }} placeholder="Nhập từ khoá..." onSearch={onSearch} enterButton />
         <div className='mt-5'>
-          <Space wrap>
-            <Select
-              defaultValue=""
-              style={{ width: 180 }}
-              onChange={handleChange}
-              options={[
-                { value: '', label: 'Sắp xếp theo' },
-                { value: 'asc', label: 'Giá tăng dần' },
-                { value: 'desc', label: 'Giá giảm dần' },
-              ]}
-            />
-          </Space>
+          <Select
+            defaultValue=""
+            style={{ width: 180 }}
+            onChange={handleChange}
+            options={[
+              { value: '', label: 'Sắp xếp theo' },
+              { value: 'asc', label: 'Giá tăng dần' },
+              { value: 'desc', label: 'Giá giảm dần' },
+            ]}
+          />
         </div>
       </div>
 
@@ -126,55 +116,59 @@ const MenuPage = () => {
         {products.map(product => (
           <Card
             key={product.id}
-            style={{ width: 400, margin: 10 }}
-            cover={
-              <img
-                src={product.thumbnail}
-              />
-            }
+            style={{ width: 440, margin: 10 }}
+            cover={<img src={product.thumbnail} alt={product.title} style={{ height: 150, objectFit: 'cover' }} />}
           >
-            <Meta
-              title={product.title}
-              description={product.description}
-            />
-
-            <ConfigProvider
-              button={{
-                className: styles.linearGradientButton,
-              }}
-            >
-              <Space>
-                <Button type="primary" size="large" style={{ marginTop: 20 }} onClick={() => showModal(product)}>
+            <div className="flex flex-col">
+              <p className="font-bold">{product.title}</p>
+              <p>Price: {product.price} $</p>
+              <p><Rate allowHalf defaultValue={product.rating} /></p>
+              <ConfigProvider button={{ className: styles.linearGradientButton }}>
+                <Button
+                  type="primary"
+                  size="middle"
+                  style={{ marginTop: 10 }}
+                  onClick={() => showModal(product)}
+                >
                   XEM CHI TIẾT
                 </Button>
-              </Space>
-            </ConfigProvider>
+              </ConfigProvider>
+            </div>
           </Card>
-        ))}
 
+        ))}
 
         <Modal
           title={selectedProduct?.title}
           open={open}
           onOk={handleOk}
+          okText={<FaCartPlus />}
           confirmLoading={confirmLoading}
           onCancel={handleCancel}
+          width={1200}
         >
           {selectedProduct && (
-            <div className="flex flex-col gap-4">
-              <p><strong>Mô tả:</strong> {selectedProduct.description}</p>
-              <p><strong>Giá:</strong> {selectedProduct.price} $</p>
-              <p><strong>Hãng:</strong> {selectedProduct.brand}</p>
-              <p><strong>Danh mục:</strong> {selectedProduct.category}</p>
-              <p><strong>Tỷ lệ giảm giá:</strong> {selectedProduct.discountPercentage}</p>
-              <p><strong>Đánh giá:</strong> {selectedProduct.rating}</p>
-              <p><strong>Số lượng còn lại:</strong> {selectedProduct.stock}</p>
-
+            <div className="flex gap-8">
+              <div className="flex-shrink-0">
+                <img
+                  src={selectedProduct.thumbnail}
+                  alt={selectedProduct.title}
+                  style={{ width: 300, height: 300, objectFit: 'cover', borderRadius: 8 }}
+                />
+              </div>
+              <div className="flex flex-col gap-3 text-base">
+                <p><strong>Mô tả:</strong> {selectedProduct.description}</p>
+                <p><strong>Giá:</strong> {selectedProduct.price} $</p>
+                <p><strong>Hãng:</strong> {selectedProduct.brand}</p>
+                <p><strong>Danh mục:</strong> {selectedProduct.category}</p>
+                <p><strong>Tỷ lệ giảm giá:</strong> {selectedProduct.discountPercentage}%</p>
+                <p><strong>Đánh giá:</strong> {selectedProduct.rating}</p>
+                <p><strong>Số lượng còn lại:</strong> {selectedProduct.stock}</p>
+              </div>
             </div>
           )}
         </Modal>
       </div>
-
 
       <div className='flex justify-center mb-20'>
         <Pagination
@@ -186,11 +180,10 @@ const MenuPage = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MenuPage
-
+export default MenuPage;
 
 const useStyle = createStyles(({ prefixCls, css }) => ({
   linearGradientButton: css`
@@ -198,7 +191,6 @@ const useStyle = createStyles(({ prefixCls, css }) => ({
       > span {
         position: relative;
       }
-
       &::before {
         content: '';
         background: linear-gradient(135deg, #6253e1, #04befe);
@@ -208,7 +200,6 @@ const useStyle = createStyles(({ prefixCls, css }) => ({
         transition: all 0.3s;
         border-radius: inherit;
       }
-
       &:hover::before {
         opacity: 0;
       }

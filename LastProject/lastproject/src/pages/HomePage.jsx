@@ -54,7 +54,7 @@ const HomePage = () => {
           </div>
 
           <div className='flex justify-center items-center'>
-            <video className='w-[550px] h-80' autoPlay muted loop>
+            <video className='w-[550px] h-80' controls muted loop>
               <source src={Video} type='video/mp4' />
             </video>
           </div>

@@ -2,14 +2,53 @@ import React from 'react'
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { SearchOutlined } from "@ant-design/icons";
 import { UserOutlined } from "@ant-design/icons";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "../hook/useTheme";
-import { Switch } from 'antd';
+import { Switch, Dropdown, message } from 'antd';
 import { BulbOutlined, BulbFilled } from '@ant-design/icons';
+import useAuth from "../hook/useAuth";
+import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 
+
+const items = [
+    {
+        label: 'Thông tin cá nhân',
+        key: '1',
+    },
+    {
+        label: 'Cài đặt địa chỉ',
+        key: '2',
+    },
+    {
+        label: 'Quản lý đơn hàng',
+        key: '3',
+    },
+    {
+        label: 'Mã đã lưu',
+        key: '4',
+    },
+    {
+        label: 'Đăng xuất',
+        key: '5',
+    },
+];
 
 const Header = () => {
     const { theme, setTheme } = useTheme();
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+
+    const onClick = ({ key }) => {
+        switch (key) {
+            case '1':
+                navigate('/userinfo');
+                break;
+            case '5':
+                logout();
+                message.success("Đăng xuất thành công");
+        }
+    };
 
     const bgClass = theme === 'dark' ? 'bg-black' : 'bg-white';
 
@@ -45,11 +84,12 @@ const Header = () => {
                             <input className='outline-none border-none' type='text' placeholder='Tìm kiếm món ăn'></input>
                             <SearchOutlined className='mt-2' />
                         </div> */}
-                        <NavLink to="/login" className={({ isActive }) =>
-                            isActive ? "text-orange-600 border-b-2 pb-2" : "hover:text-orange-600"}>
-                            <UserOutlined className='mr-2' />
-                            <span>Tài khoản</span>
-                        </NavLink>
+                        <Dropdown menu={{ items, onClick }} placement="bottomRight" arrow>
+                            <div className="cursor-pointer flex items-center hover:text-orange-600">
+                                <UserOutlined className='mr-2' />
+                                <span>Tài khoản</span>
+                            </div>
+                        </Dropdown>
                         <div className='flex items-center justify-between'>
                             <button type='button' className='cursor-pointer'><ShoppingCartOutlined /></button>
                         </div>
@@ -57,8 +97,8 @@ const Header = () => {
                             <Switch
                                 checked={theme === 'dark'}
                                 onChange={(checked) => setTheme(checked ? 'dark' : 'light')}
-                                checkedChildren={<BulbFilled />}
-                                unCheckedChildren={<BulbOutlined />}
+                                checkedChildren={<MoonOutlined />}
+                                unCheckedChildren={<SunOutlined />}
                                 className="bg-gray-300"
                             />
                         </div>
