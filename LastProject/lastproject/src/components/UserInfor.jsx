@@ -1,16 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Spin } from 'antd';
 import { AuthContext } from '../context/AuthContext';
 
 const UserInfor = () => {
-    const { userData } = useContext(AuthContext);
+    const { getUserInfo } = useContext(AuthContext);
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    if (!userData) {
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getUserInfo();
+                setUser(data);
+            } catch (error) {
+                console.error("Lỗi lấy thông tin người dùng:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [getUserInfo]);
+
+    if (loading) {
         return (
             <div className="flex justify-center items-center min-h-[200px]">
                 <Spin tip="Đang tải thông tin người dùng..." />
             </div>
         );
+    }
+
+    if (!user) {
+        return <p className="text-center text-red-500">Không thể tải thông tin người dùng.</p>;
     }
 
     return (
@@ -22,19 +43,19 @@ const UserInfor = () => {
                 <div className="space-y-4">
                     <div className="flex items-center">
                         <span className="font-semibold text-gray-700 w-32">ID:</span>
-                        <span className="text-gray-600">{userData.id}</span>
+                        <span className="text-gray-600">{user.id}</span>
                     </div>
                     <div className="flex items-center">
                         <span className="font-semibold text-gray-700 w-32">Họ tên:</span>
-                        <span className="text-gray-600">{userData.firstName} {userData.lastName}</span>
+                        <span className="text-gray-600">{user.firstName} {user.lastName}</span>
                     </div>
                     <div className="flex items-center">
                         <span className="font-semibold text-gray-700 w-32">Tên người dùng:</span>
-                        <span className="text-gray-600">{userData.username}</span>
+                        <span className="text-gray-600">{user.username}</span>
                     </div>
                     <div className="flex items-center">
                         <span className="font-semibold text-gray-700 w-32">Email:</span>
-                        <span className="text-gray-600">{userData.email || 'Chưa có email'}</span>
+                        <span className="text-gray-600">{user.email || 'Chưa có email'}</span>
                     </div>
                 </div>
             </div>

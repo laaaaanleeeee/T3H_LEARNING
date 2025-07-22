@@ -9,7 +9,7 @@ import BookingNowPage from "./pages/BookingNowPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import Test from "./components/Test";
-import useAuth from "./hook/useAuth";
+import {useAuth} from "./hook/useAuth";
 import CartPage from "./pages/CartPage";
 import UserInforPage from "./pages/UserInforPage";
 

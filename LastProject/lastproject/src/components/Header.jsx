@@ -4,10 +4,12 @@ import { SearchOutlined } from "@ant-design/icons";
 import { UserOutlined } from "@ant-design/icons";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "../hook/useTheme";
-import { Switch, Dropdown, message } from 'antd';
+import { Switch, Dropdown, message, Badge } from 'antd';
 import { BulbOutlined, BulbFilled } from '@ant-design/icons';
-import useAuth from "../hook/useAuth";
+import { useAuth } from "../hook/useAuth";
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
+import { useCount } from '../hook/useCount';
+
 
 
 const items = [
@@ -37,6 +39,8 @@ const Header = () => {
     const { theme, setTheme } = useTheme();
     const { logout } = useAuth();
     const navigate = useNavigate();
+    const { count } = useCount();
+
 
 
     const onClick = ({ key }) => {
@@ -86,13 +90,17 @@ const Header = () => {
                         </div> */}
                         <Dropdown menu={{ items, onClick }} placement="bottomRight" arrow>
                             <div className="cursor-pointer flex items-center hover:text-orange-600">
-                                <UserOutlined className='mr-2' />
-                                <span>Tài khoản</span>
+                                <UserOutlined className='mr-2 text-xl' />
+                                <span className='text-xl'>Tài khoản</span>
                             </div>
                         </Dropdown>
-                        <div className='flex items-center justify-between'>
-                            <button type='button' className='cursor-pointer'><ShoppingCartOutlined /></button>
-                        </div>
+                        <NavLink to="/cart" className={({ isActive }) =>
+                            isActive ? "text-orange-600 pb-2" : "hover:text-orange-600"}>
+                            <Badge count={count} overflowCount={99} className='flex items-center justify-between'>
+                                <button type='button' className='cursor-pointer text-xl text-orange-600 hover:text-blue-600'><ShoppingCartOutlined /></button>
+                            </Badge>
+                        </NavLink>
+
                         <div className="flex items-center">
                             <Switch
                                 checked={theme === 'dark'}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import useAuth from '../hook/useAuth'
+import {useAuth} from '../hook/useAuth';
 import { FaCircleUser, FaRegAddressBook, FaCartShopping } from "react-icons/fa6";
 import { RiCoupon2Fill } from "react-icons/ri";
 import { CiLogout } from "react-icons/ci";

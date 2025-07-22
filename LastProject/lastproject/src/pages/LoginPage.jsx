@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate, NavLink } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import useAuth from '../hook/useAuth';
+import {useAuth} from '../hook/useAuth';
 import { Button, Divider, notification, Space } from 'antd';
 
 const LoginPage = () => {

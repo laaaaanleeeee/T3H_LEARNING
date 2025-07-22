@@ -1,10 +1,10 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { message } from "antd";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
-  const [userData, setUserData] = useState(null);
 
   const login = async (username, password) => {
     try {
@@ -24,32 +24,27 @@ export const AuthProvider = ({ children }) => {
 
       const data = await res.json();
       setToken(data.accessToken);
-      setUserData({
-        id: data.id,
-        username: data.username,
-        email: data.email,
-        firstName: data.firstName,
-        lastName: data.lastName,
-      });
-
       localStorage.setItem("token", data.accessToken);
+      message.success("Đăng nhập thành công!");
     } catch (err) {
-      alert("Đăng nhập thất bại! (" + err.message + ")");
+      message.error("Đăng nhập thất bại! (" + err.message + ")");
     }
   };
 
   const logout = () => {
     setToken(null);
-    setUserData(null);
     localStorage.removeItem("token");
+    message.success("Đã đăng xuất.");
   };
 
-  const getUserInfo = async (accessToken) => {
+  const getUserInfo = async () => {
+    if (!token) throw new Error("Chưa đăng nhập");
+
     try {
       const res = await fetch("https://dummyjson.com/auth/me", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${accessToken}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -58,30 +53,24 @@ export const AuthProvider = ({ children }) => {
       }
 
       const user = await res.json();
-      setUserData({
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-      });
+      return user;
     } catch (error) {
-      alert("Lỗi lấy thông tin người dùng: " + error.message);
+      message.error("Lỗi lấy thông tin người dùng: " + error.message);
       logout();
+      throw error;
     }
   };
 
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
-      getUserInfo(token);
     } else {
       localStorage.removeItem("token");
     }
   }, [token]);
 
   return (
-    <AuthContext.Provider value={{ token, login, logout, userData }}>
+    <AuthContext.Provider value={{ token, login, logout, getUserInfo }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Button, ConfigProvider, Space, Pagination, Modal, Input, Select } from 'antd';
+import { Card, Button, ConfigProvider, Pagination, Modal, Input, Select } from 'antd';
 import { FaCartPlus } from "react-icons/fa6";
 import { createStyles } from 'antd-style';
 import { Rate } from 'antd';
+import { useCount } from "../hook/useCount";
+import { useTheme } from "../hook/useTheme";
+
 
 const { Meta } = Card;
 const { Search } = Input;
@@ -11,29 +14,24 @@ const MenuPage = () => {
   const { styles } = useStyle();
   const [currentPage, setCurrentPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const pageSize = 15;
+  const pageSize = 20;
   const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const [open, setOpen] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [searchValue, setSearchValue] = useState('');
   const [sortValue, setSortValue] = useState('');
   const [sortOrder, setSortOrder] = useState('');
+  const { addCount } = useCount();
+  const { theme } = useTheme();
+    
+  const bgClass = theme === 'dark' ? 'bg-black' : 'bg-orange-50';
 
   const showModal = async (product) => {
     setOpen(true);
     const response = await fetch(`https://dummyjson.com/products/${product.id}`);
     const data = await response.json();
     setSelectedProduct(data);
-  };
-
-  const handleOk = () => {
-    setConfirmLoading(true);
-    setTimeout(() => {
-      setOpen(false);
-      setConfirmLoading(false);
-    }, 0);
   };
 
   const handleCancel = () => setOpen(false);
@@ -94,83 +92,97 @@ const MenuPage = () => {
   }, [currentPage, searchValue, sortValue, sortOrder, allProducts]);
 
   return (
-    <div className='w-full pt-30'>
-      <p className='text-5xl text-center'>DANH SÁCH SẢN PHẨM</p>
-      <div className='flex flex-col justify-center items-center mt-20'>
-        <Search style={{ width: 500 }} placeholder="Nhập từ khoá..." onSearch={onSearch} enterButton />
-        <div className='mt-5'>
-          <Select
-            defaultValue=""
-            style={{ width: 180 }}
-            onChange={handleChange}
-            options={[
-              { value: '', label: 'Sắp xếp theo' },
-              { value: 'asc', label: 'Giá tăng dần' },
-              { value: 'desc', label: 'Giá giảm dần' },
-            ]}
-          />
-        </div>
+    <div className={`w-full px-4 md:px-12 py-10 ${bgClass} min-h-screen`}>
+      <h1 className="text-4xl mt-20 font-bold text-center text-orange-600 mb-10 uppercase">
+        Danh sách sản phẩm
+      </h1>
+
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-10">
+        <Search
+          style={{ width: 400 }}
+          placeholder="Tìm kiếm sản phẩm..."
+          onSearch={onSearch}
+          enterButton
+          allowClear
+        />
+        <Select
+          defaultValue=""
+          style={{ width: 180 }}
+          onChange={handleChange}
+          options={[
+            { value: '', label: 'Sắp xếp theo' },
+            { value: 'asc', label: 'Giá tăng dần' },
+            { value: 'desc', label: 'Giá giảm dần' },
+          ]}
+        />
       </div>
 
-      <div className='flex flex-wrap p-10 justify-center items-center'>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center">
         {products.map(product => (
           <Card
             key={product.id}
-            style={{ width: 440, margin: 10 }}
-            cover={<img src={product.thumbnail} alt={product.title} style={{ height: 150, objectFit: 'cover' }} />}
+            className="w-full max-w-xs shadow-lg rounded-lg"
+            cover={
+              <img
+                src={product.thumbnail}
+                alt={product.title}
+                className="h-48 object-cover rounded-t-lg"
+              />
+            }
           >
-            <div className="flex flex-col">
-              <p className="font-bold">{product.title}</p>
-              <p>Price: {product.price} $</p>
-              <p><Rate allowHalf defaultValue={product.rating} /></p>
-              <ConfigProvider button={{ className: styles.linearGradientButton }}>
-                <Button
-                  type="primary"
-                  size="middle"
-                  style={{ marginTop: 10 }}
-                  onClick={() => showModal(product)}
-                >
-                  XEM CHI TIẾT
-                </Button>
-              </ConfigProvider>
+            <div className="flex flex-col gap-2">
+              <p className="text-lg font-semibold text-gray-800">{product.title}</p>
+              <p className="text-sm text-gray-600">Giá: <span className="text-red-500 font-medium">${product.price}</span></p>
+              <div className="flex items-center">
+                <Rate allowHalf disabled defaultValue={product.rating} />
+              </div>
+              <Button
+                type="primary"
+                size="middle"
+                className={styles.linearGradientButton}
+                style={{ marginTop: 10 }}
+                onClick={() => showModal(product)}
+              >
+                XEM CHI TIẾT
+              </Button>
+
             </div>
           </Card>
-
         ))}
-
-        <Modal
-          title={selectedProduct?.title}
-          open={open}
-          onOk={handleOk}
-          okText={<FaCartPlus />}
-          confirmLoading={confirmLoading}
-          onCancel={handleCancel}
-          width={1200}
-        >
-          {selectedProduct && (
-            <div className="flex gap-8">
-              <div className="flex-shrink-0">
-                <img
-                  src={selectedProduct.thumbnail}
-                  alt={selectedProduct.title}
-                  style={{ width: 300, height: 300, objectFit: 'cover', borderRadius: 8 }}
-                />
-              </div>
-              <div className="flex flex-col gap-3 text-base">
-                <p><strong>Mô tả:</strong> {selectedProduct.description}</p>
-                <p><strong>Giá:</strong> {selectedProduct.price} $</p>
-                <p><strong>Hãng:</strong> {selectedProduct.brand}</p>
-                <p><strong>Danh mục:</strong> {selectedProduct.category}</p>
-                <p><strong>Tỷ lệ giảm giá:</strong> {selectedProduct.discountPercentage}%</p>
-                <p><strong>Đánh giá:</strong> {selectedProduct.rating}</p>
-                <p><strong>Số lượng còn lại:</strong> {selectedProduct.stock}</p>
-              </div>
-            </div>
-          )}
-        </Modal>
       </div>
 
-      <div className='flex justify-center mb-20'>
+      <Modal
+        title={selectedProduct?.title}
+        open={open}
+        onOk={() => {
+          addCount();
+          handleCancel();
+        }}
+        okText={<><FaCartPlus /></>}
+        onCancel={handleCancel}
+        width={800}
+      >
+        {selectedProduct && (
+          <div className="flex flex-col md:flex-row gap-8">
+            <img
+              src={selectedProduct.thumbnail}
+              alt={selectedProduct.title}
+              className="w-full md:w-80 h-80 object-cover rounded-lg"
+            />
+            <div className="flex flex-col gap-2 text-base">
+              <p><strong>Mô tả:</strong> {selectedProduct.description}</p>
+              <p><strong>Giá:</strong> ${selectedProduct.price}</p>
+              <p><strong>Hãng:</strong> {selectedProduct.brand}</p>
+              <p><strong>Danh mục:</strong> {selectedProduct.category}</p>
+              <p><strong>Giảm giá:</strong> {selectedProduct.discountPercentage}%</p>
+              <p><strong>Đánh giá:</strong> {selectedProduct.rating}</p>
+              <p><strong>Số lượng:</strong> {selectedProduct.stock}</p>
+            </div>
+          </div>
+        )}
+      </Modal>
+
+      <div className="flex justify-center mt-12">
         <Pagination
           current={currentPage}
           pageSize={pageSize}
