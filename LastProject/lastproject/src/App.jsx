@@ -12,6 +12,7 @@ import Test from "./components/Test";
 import {useAuth} from "./hook/useAuth";
 import CartPage from "./pages/CartPage";
 import UserInforPage from "./pages/UserInforPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 
 
@@ -34,6 +35,10 @@ function App() {
         <Route path="/about" element={<AboutUsPage />}></Route>
         <Route path="/news" element={<NewsPage />}></Route>
         <Route path="/booking" element={<BookingNowPage />}></Route>
+        <Route path="/menu/:id" element={<ProductDetailPage />} />
+
+        
+
 
         <Route path="/userinfo" element={<PrivateRoute><UserInforPage /></PrivateRoute>}></Route>
         <Route path="/cart" element={<PrivateRoute><CartPage /></PrivateRoute>}></Route>

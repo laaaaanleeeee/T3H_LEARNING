@@ -1,35 +1,32 @@
 import { createContext, useState, useEffect } from "react";
 import { message } from "antd";
+import api from "../api/axiosInstance";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
 
+
   const login = async (username, password) => {
     try {
-      const res = await fetch("https://dummyjson.com/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username,
-          password,
-          expiresInMins: 30,
-        }),
-      });
+      const res = await api.post("/auth/login", {
+        username,
+        password,
+        expiresInMins: 30,
+      },
+      );
 
-      if (!res.ok) {
-        throw new Error("Thông tin đăng nhập không đúng!");
-      }
-
-      const data = await res.json();
+      const data = res.data;
+      console.log(data);
       setToken(data.accessToken);
       localStorage.setItem("token", data.accessToken);
       message.success("Đăng nhập thành công!");
-    } catch (err) {
-      message.error("Đăng nhập thất bại! (" + err.message + ")");
     }
-  };
+    catch (err) {
+      message.error("Đăng nhập thất bại! (" + err.response?.data?.message + ")");
+    }
+  }
 
   const logout = () => {
     setToken(null);
@@ -37,29 +34,6 @@ export const AuthProvider = ({ children }) => {
     message.success("Đã đăng xuất.");
   };
 
-  const getUserInfo = async () => {
-    if (!token) throw new Error("Chưa đăng nhập");
-
-    try {
-      const res = await fetch("https://dummyjson.com/auth/me", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (!res.ok) {
-        throw new Error("Token không hợp lệ hoặc đã hết hạn!");
-      }
-
-      const user = await res.json();
-      return user;
-    } catch (error) {
-      message.error("Lỗi lấy thông tin người dùng: " + error.message);
-      logout();
-      throw error;
-    }
-  };
 
   useEffect(() => {
     if (token) {
@@ -70,7 +44,7 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   return (
-    <AuthContext.Provider value={{ token, login, logout, getUserInfo }}>
+    <AuthContext.Provider value={{ token, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,17 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Spin } from 'antd';
-import { AuthContext } from '../context/AuthContext';
+import React, { useEffect, useState } from 'react';
+import { getUserInfoApi } from '../services/userService';
 
 const UserInfor = () => {
-    const { getUserInfo } = useContext(AuthContext);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await getUserInfo();
-                setUser(data);
+                const res = await getUserInfoApi();
+                setUser(res.data);
             } catch (error) {
                 console.error("Lỗi lấy thông tin người dùng:", error);
             } finally {
@@ -20,12 +18,12 @@ const UserInfor = () => {
         };
 
         fetchData();
-    }, [getUserInfo]);
+    }, []);
 
     if (loading) {
         return (
             <div className="flex justify-center items-center min-h-[200px]">
-                <Spin tip="Đang tải thông tin người dùng..." />
+                Đang tải thông tin người dùng...
             </div>
         );
     }

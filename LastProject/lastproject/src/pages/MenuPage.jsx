@@ -3,8 +3,8 @@ import { Card, Button, ConfigProvider, Pagination, Modal, Input, Select } from '
 import { FaCartPlus } from "react-icons/fa6";
 import { createStyles } from 'antd-style';
 import { Rate } from 'antd';
-import { useCount } from "../hook/useCount";
 import { useTheme } from "../hook/useTheme";
+import { useNavigate } from 'react-router-dom';
 
 
 const { Meta } = Card;
@@ -17,24 +17,16 @@ const MenuPage = () => {
   const pageSize = 20;
   const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
   const [searchValue, setSearchValue] = useState('');
   const [sortValue, setSortValue] = useState('');
   const [sortOrder, setSortOrder] = useState('');
-  const { addCount } = useCount();
   const { theme } = useTheme();
+  const navigate = useNavigate();
     
   const bgClass = theme === 'dark' ? 'bg-black' : 'bg-orange-50';
-
-  const showModal = async (product) => {
-    setOpen(true);
-    const response = await fetch(`https://dummyjson.com/products/${product.id}`);
-    const data = await response.json();
-    setSelectedProduct(data);
-  };
-
-  const handleCancel = () => setOpen(false);
+  const cardBgColor = theme === 'dark' ? '#333' : '#fff';
+  const cardBorderColor = theme === 'dark' ? '#444' : '#eaeaea';
+  const textColor = theme === 'dark' ? '#fff' : '#333';
 
   const handleChange = (value) => {
     if (value === 'asc') {
@@ -122,6 +114,11 @@ const MenuPage = () => {
           <Card
             key={product.id}
             className="w-full max-w-xs shadow-lg rounded-lg"
+            style={{
+              backgroundColor: cardBgColor,
+              borderColor: cardBorderColor,
+              color: textColor,
+            }}
             cover={
               <img
                 src={product.thumbnail}
@@ -131,8 +128,8 @@ const MenuPage = () => {
             }
           >
             <div className="flex flex-col gap-2">
-              <p className="text-lg font-semibold text-gray-800">{product.title}</p>
-              <p className="text-sm text-gray-600">Giá: <span className="text-red-500 font-medium">${product.price}</span></p>
+              <p className="text-lg font-semibold ">{product.title}</p>
+              <p className="text-sm ">Giá: <span className="text-red-500 font-medium">${product.price}</span></p>
               <div className="flex items-center">
                 <Rate allowHalf disabled defaultValue={product.rating} />
               </div>
@@ -141,7 +138,7 @@ const MenuPage = () => {
                 size="middle"
                 className={styles.linearGradientButton}
                 style={{ marginTop: 10 }}
-                onClick={() => showModal(product)}
+                onClick={() => navigate(`/menu/${product.id}`)}
               >
                 XEM CHI TIẾT
               </Button>
@@ -150,37 +147,6 @@ const MenuPage = () => {
           </Card>
         ))}
       </div>
-
-      <Modal
-        title={selectedProduct?.title}
-        open={open}
-        onOk={() => {
-          addCount();
-          handleCancel();
-        }}
-        okText={<><FaCartPlus /></>}
-        onCancel={handleCancel}
-        width={800}
-      >
-        {selectedProduct && (
-          <div className="flex flex-col md:flex-row gap-8">
-            <img
-              src={selectedProduct.thumbnail}
-              alt={selectedProduct.title}
-              className="w-full md:w-80 h-80 object-cover rounded-lg"
-            />
-            <div className="flex flex-col gap-2 text-base">
-              <p><strong>Mô tả:</strong> {selectedProduct.description}</p>
-              <p><strong>Giá:</strong> ${selectedProduct.price}</p>
-              <p><strong>Hãng:</strong> {selectedProduct.brand}</p>
-              <p><strong>Danh mục:</strong> {selectedProduct.category}</p>
-              <p><strong>Giảm giá:</strong> {selectedProduct.discountPercentage}%</p>
-              <p><strong>Đánh giá:</strong> {selectedProduct.rating}</p>
-              <p><strong>Số lượng:</strong> {selectedProduct.stock}</p>
-            </div>
-          </div>
-        )}
-      </Modal>
 
       <div className="flex justify-center mt-12">
         <Pagination
