@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate, NavLink } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import ImgBg from "../assets/pexels-pixabay-459271.jpg"
 
 const SignUpPage = () => {
     const navigate = useNavigate();
@@ -33,8 +34,8 @@ const SignUpPage = () => {
 
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 bg-cover bg-center" style={{ backgroundImage: `url(${ImgBg})` }}>
+            <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
                 <h2 className="text-2xl font-semibold text-center mb-6">Đăng ký tài khoản</h2>
                 <form onSubmit={formik.handleSubmit}>
                     <div className="mb-4">

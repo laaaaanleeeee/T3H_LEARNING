@@ -6,12 +6,21 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    if (!localStorage.getItem("themeConfig")) {
-      localStorage.setItem("themConfig", theme);
-      return;
+    const savedTheme = localStorage.getItem("themeConfig");
+
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      setTheme(systemTheme);
+      localStorage.setItem("themeConfig", systemTheme);
     }
-    setTheme(localStorage.getItem("themeConfig"));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("themeConfig", theme);
   }, [theme]);
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { getUserInfoApi } from '../services/userService';
+import { getUserInfoApi } from '../services/UserService';
+
 
 const UserInfor = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+
+
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,27 +37,27 @@ const UserInfor = () => {
     }
 
     return (
-        <div className="flex justify-start py-6 px-4">
+        <div className={`flex justify-start py-6 px-4 `}>
             <div className="w-full max-w-lg">
-                <h2 className="text-3xl font-bold text-gray-800 mb-6">
+                <h2 className="text-3xl font-bold mb-6">
                     THÔNG TIN NGƯỜI DÙNG
                 </h2>
                 <div className="space-y-4">
                     <div className="flex items-center">
-                        <span className="font-semibold text-gray-700 w-32">ID:</span>
-                        <span className="text-gray-600">{user.id}</span>
+                        <span className="font-semibold w-32">ID:</span>
+                        <span >{user.id}</span>
                     </div>
                     <div className="flex items-center">
-                        <span className="font-semibold text-gray-700 w-32">Họ tên:</span>
-                        <span className="text-gray-600">{user.firstName} {user.lastName}</span>
+                        <span className="font-semibold w-32">Họ tên:</span>
+                        <span>{user.firstName} {user.lastName}</span>
                     </div>
                     <div className="flex items-center">
-                        <span className="font-semibold text-gray-700 w-32">Tên người dùng:</span>
-                        <span className="text-gray-600">{user.username}</span>
+                        <span className="font-semibold w-32">Tên người dùng:</span>
+                        <span>{user.username}</span>
                     </div>
                     <div className="flex items-center">
-                        <span className="font-semibold text-gray-700 w-32">Email:</span>
-                        <span className="text-gray-600">{user.email || 'Chưa có email'}</span>
+                        <span className="font-semibold w-32">Email:</span>
+                        <span>{user.email || 'Chưa có email'}</span>
                     </div>
                 </div>
             </div>

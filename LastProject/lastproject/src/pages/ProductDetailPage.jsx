@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Rate, Button as AntButton } from 'antd';
 import { RiCoupon3Line } from "react-icons/ri";
-import { useCount } from "../hook/useCount";
+import { useCart } from "../hook/useCart";
 import { useTheme } from "../hook/useTheme";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [count, setCount] = useState(1);
-  const { addCount } = useCount();
+  const { addCount } = useCart();
   const { theme } = useTheme();
 
 
@@ -58,11 +58,11 @@ const ProductDetailPage = () => {
 
           <div className={`flex items-center gap-4 ${priceBgColor}  px-6 py-4 rounded-lg shadow`}>
             <p className="text-2xl text-orange-600 font-bold">
-              <span className="underline">đ</span> {(product.price * 26000).toFixed()}
+              <span className="underline">đ</span> {(product.price * 26000).toLocaleString('vi-VN')}₫
             </p>
             <RiCoupon3Line className="text-orange-600 text-2xl" />
             <p className="line-through text-gray-500">
-              đ{(product.price * 26000 * (1 + product.discountPercentage / 100)).toFixed()}
+              đ{(product.price * 26000 * (1 + product.discountPercentage / 100)).toLocaleString('vi-VN')}₫
             </p>
           </div>
 

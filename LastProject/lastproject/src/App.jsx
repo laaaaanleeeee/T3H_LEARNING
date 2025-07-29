@@ -9,17 +9,12 @@ import BookingNowPage from "./pages/BookingNowPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import Test from "./components/Test";
-import {useAuth} from "./hook/useAuth";
 import CartPage from "./pages/CartPage";
 import UserInforPage from "./pages/UserInforPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import PrivateRoute from "./routes/PrivateRoute";
 
 
-
-const PrivateRoute = ({ children }) => {
-  const { token } = useAuth();
-  return token ? children : <Navigate to="/login" replace />;
-}
 
 
 function App() {

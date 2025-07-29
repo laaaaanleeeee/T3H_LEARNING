@@ -55,6 +55,7 @@ api.interceptors.response.use(
                     { expiresInMins: 30 },
                     {
                         headers: { "Content-Type": "application/json" },
+                        timeout: 5000
                     });
 
                 const newAccessToken = res.data.accessToken;

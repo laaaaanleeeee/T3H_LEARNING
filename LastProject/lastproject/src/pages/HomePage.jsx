@@ -14,6 +14,7 @@ import HomeCarousel from '../components/HomeCarousel';
 import StepBooking from '../components/StepBooking';
 import ReasonChooseUs from '../components/ReasonChooseUs';
 import { useTheme } from "../hook/useTheme";
+import { FloatButton } from 'antd';
 
 
 const onChange = value => {
@@ -29,14 +30,25 @@ const HomePage = () => {
   const bgClass2 = theme === 'dark' ? 'bg-black' : 'bg-gray-200';
 
 
-  
+
   return (
     <>
-      <Carousel autoplay className="w-full pt-20">
-        <HomeCarousel srcImg={ImageMeal1} />
-        <HomeCarousel srcImg={ImageMeal2} />
-        <HomeCarousel srcImg={ImageMeal3} />
-      </Carousel>
+      <div>
+        <Carousel autoplay className="w-full pt-20">
+          <HomeCarousel srcImg={ImageMeal1} />
+          <HomeCarousel srcImg={ImageMeal2} />
+          <HomeCarousel srcImg={ImageMeal3} />
+        </Carousel>
+
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center pointer-events-none">
+          <h2 className="text-4xl font-bold">ƯU ĐÃI LÊN TỚI 30%</h2>
+          <p className="text-4xl font-bold mt-2">KHI ĐẶT SET MENU SUM VẦY</p>
+          <p className="mt-1 mb-5 text-sm">Áp dụng cho tiệc tại Hà Nội, từ 15/11 - 20/11/2021</p>
+          <button className="mt-5 px-6 py-2 bg-orange-600 text-white rounded pointer-events-auto">
+            XEM CHI TIẾT ƯU ĐÃI
+          </button>
+        </div>
+      </div>
 
 
 
@@ -169,6 +181,7 @@ const HomePage = () => {
         </div>
       </div>
 
+    <FloatButton.BackTop />
 
 
 

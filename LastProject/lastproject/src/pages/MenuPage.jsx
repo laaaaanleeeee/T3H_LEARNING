@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button, ConfigProvider, Pagination, Modal, Input, Select } from 'antd';
-import { FaCartPlus } from "react-icons/fa6";
 import { createStyles } from 'antd-style';
 import { Rate } from 'antd';
 import { useTheme } from "../hook/useTheme";
 import { useNavigate } from 'react-router-dom';
+import { FloatButton } from 'antd';
+import { getProducts } from '../services/ProductService';
 
 
 const { Meta } = Card;
@@ -22,7 +23,7 @@ const MenuPage = () => {
   const [sortOrder, setSortOrder] = useState('');
   const { theme } = useTheme();
   const navigate = useNavigate();
-    
+
   const bgClass = theme === 'dark' ? 'bg-black' : 'bg-orange-50';
   const cardBgColor = theme === 'dark' ? '#333' : '#fff';
   const cardBorderColor = theme === 'dark' ? '#444' : '#eaeaea';
@@ -50,8 +51,8 @@ const MenuPage = () => {
   useEffect(() => {
     const fetchAll = async () => {
       try {
-        const res = await fetch(`https://dummyjson.com/products?limit=194`);
-        const data = await res.json();
+        const res = await getProducts();
+        const data = res.data;
         setAllProducts(data.products);
         setTotal(data.total);
       } catch (error) {
@@ -123,15 +124,19 @@ const MenuPage = () => {
               <img
                 src={product.thumbnail}
                 alt={product.title}
-                className="h-48 object-cover rounded-t-lg"
+                className="h-50 object-cover rounded-t-lg"
               />
             }
           >
-            <div className="flex flex-col gap-2">
-              <p className="text-lg font-semibold ">{product.title}</p>
-              <p className="text-sm ">Giá: <span className="text-red-500 font-medium">${product.price}</span></p>
-              <div className="flex items-center">
-                <Rate allowHalf disabled defaultValue={product.rating} />
+            <div className="flex flex-col justify-between h-full min-h-[170px]">
+              <div className="flex flex-col gap-3 flex-grow">
+                <p className="text-lg font-semibold">{product.title}</p>
+                <p className="text-sm">
+                  Giá: <span className="text-red-500 font-medium">{(product.price * 26000).toLocaleString('vi-VN')}₫</span>
+                </p>
+                <div className="flex items-center mb-2">
+                  <Rate allowHalf disabled defaultValue={product.rating} />
+                </div>
               </div>
               <Button
                 type="primary"
@@ -157,6 +162,7 @@ const MenuPage = () => {
           showSizeChanger={false}
         />
       </div>
+      <FloatButton.BackTop />
     </div>
   );
 };

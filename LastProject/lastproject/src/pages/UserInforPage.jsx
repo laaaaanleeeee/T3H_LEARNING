@@ -3,17 +3,26 @@ import {useAuth} from '../hook/useAuth';
 import { FaCircleUser, FaRegAddressBook, FaCartShopping } from "react-icons/fa6";
 import { RiCoupon2Fill } from "react-icons/ri";
 import { CiLogout } from "react-icons/ci";
-import { Layout, Menu, theme } from 'antd';
+import { Layout, Menu, theme as antdTheme  } from 'antd';
 const { Sider, Content } = Layout;
 import { useNavigate } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import UserInfor from '../components/UserInfor';
+import { useTheme } from "../hook/useTheme";
+
 
 
 const UserInforPage = () => {
   const { token, logout } = useAuth();
   const [selectedKey, setSelectedKey] = useState("1");
   const navigate = useNavigate();
+  const {theme} = useTheme();
+
+  const bgContent = theme === 'dark' ? '#333333' : 'white';
+  const textContent = theme === 'dark' ? 'white' : 'black';
+  const bgLayout = theme === 'dark' ? 'black' : '#fff7ed';
+  const siderBg = theme === 'dark' ? '#1a1a1a' : '#f0f0f0';
+  const menuItemColor = theme === 'dark' ? '#b3b3b3' : '#000000';
 
   const handleMenuClick = (e) => {
     if (e.key === "5") {
@@ -40,20 +49,24 @@ const UserInforPage = () => {
   };
 
   const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+    token: { colorBgContainer },
+  } = antdTheme.useToken();
 
   return (
     <div>
       {token ? (
-        <Layout className='p-25 mt-10'>
-          <Sider trigger={null} collapsible className="bg-gray-900">
+        <Layout className='p-25 mt-10 ' style={{backgroundColor: `${bgLayout}`}}>
+          <Sider trigger={null} collapsible style={{ backgroundColor: `${siderBg}` }}>
             <Menu
-              theme="dark"
+              theme={theme}
               mode="inline"
               defaultSelectedKeys={['1']}
               onClick={handleMenuClick}
-              className="flex flex-col items-center"
+              className="flex flex-col gap-5"
+              style={{
+                backgroundColor: `${siderBg}`,
+                color: `${menuItemColor}`,
+              }}
               items={[
                 { key: '1', icon: <FaCircleUser />, label: 'Thông tin cá nhân' },
                 { key: '2', icon: <FaRegAddressBook />, label: 'Cài đặt địa chỉ' },
@@ -69,7 +82,8 @@ const UserInforPage = () => {
                 padding: 24,
                 minHeight: 280,
                 background: colorBgContainer,
-                borderRadius: borderRadiusLG,
+                backgroundColor: `${bgContent}`,
+                color: `${textContent}`
               }}
             >
               {renderContent()}

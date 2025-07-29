@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import {useAuth} from '../hook/useAuth';
 import { Button, Divider, notification, Space } from 'antd';
+import ImgBg from "../assets/pexels-pixabay-459271.jpg"
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -41,9 +42,9 @@ const LoginPage = () => {
     return (
         <>
             {contextHolder}
-            <div className="min-h-screen flex items-center justify-center bg-gray-100">
-                <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-                    <h2 className="text-2xl font-semibold text-center mb-6">Đăng nhập</h2>
+            <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${ImgBg})` }}>
+                <div className="bg-white p-8 rounded-lg shadow-2xl bg-opacity-100 w-full max-w-md">
+                    <h2 className="text-2xl font-bold text-center mb-6">Đăng nhập</h2>
                     <form onSubmit={formik.handleSubmit}>
                         <div className="mb-4">
                             <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">

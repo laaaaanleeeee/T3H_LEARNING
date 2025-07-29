@@ -3,6 +3,7 @@ import Video from "../assets/Food Promo Video - Manual Mode Productions - Manual
 import BackgroundImage from "../assets/pexels-valeriya-1639562.jpg";
 import { PlusOutlined } from '@ant-design/icons';
 import { useTheme } from "../hook/useTheme";
+import { FloatButton } from 'antd';
 
 
 const AboutUs = () => {
@@ -177,6 +178,8 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+
+      <FloatButton.BackTop />
 
     </div>
 
