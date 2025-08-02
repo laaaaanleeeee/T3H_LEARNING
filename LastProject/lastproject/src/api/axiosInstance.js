@@ -39,35 +39,44 @@ api.interceptors.response.use(
                 return new Promise((resolve, reject) => {
                     failedQueue.push({
                         resolve: (token) => {
-                            originalRequest.headers.Authorization = `Bearer ` + token;
+                            originalRequest.headers.Authorization = `Bearer ${token}`;
                             resolve(api(originalRequest));
                         },
                         reject: (err) => reject(err),
                     });
-                })
+                });
             }
 
             isRefreshing = true;
 
             try {
+                const refreshToken = localStorage.getItem('refreshToken');
+                if (!refreshToken) throw new Error("Missing refresh token");
+
                 const res = await axios.post(
-                    "https://dummyjson.com/auth/refresh",
-                    { expiresInMins: 30 },
+                    'https://dummyjson.com/auth/refresh',
                     {
-                        headers: { "Content-Type": "application/json" },
-                    });
+                        refreshToken,
+                        expiresInMins: 30
+                    },
+                    {
+                        headers: { 'Content-Type': 'application/json' },
+                        withCredentials: false
+                    }
+                );
 
-                const newAccessToken = res.data.accessToken;
-                localStorage.setItem('token', newAccessToken);
+                const { accessToken, refreshToken: newRefreshToken } = res.data;
 
-                processQueue(null, newAccessToken);
-                originalRequest.headers.Authorization = 'Bearer ' + newAccessToken;
+                localStorage.setItem('token', accessToken);
+                localStorage.setItem('refreshToken', newRefreshToken);
+
+                processQueue(null, accessToken);
+                originalRequest.headers.Authorization = `Bearer ${accessToken}`;
 
                 return api(originalRequest);
             } catch (err) {
                 processQueue(err, null);
-                localStorage.removeItem("token");
-                window.location.href = '/login';
+                console.error('Refresh token failed', err);
                 return Promise.reject(err);
             } finally {
                 isRefreshing = false;
@@ -76,6 +85,7 @@ api.interceptors.response.use(
 
         return Promise.reject(error);
     }
-)
+);
+
 
 export default api;

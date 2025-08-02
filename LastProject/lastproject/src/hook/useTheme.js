@@ -1,7 +1,18 @@
-import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext.jsx";
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { setTheme, initializeTheme } from '../redux/actions/themeAction';
 
 export const useTheme = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
-  return { theme, setTheme };
+  const theme = useSelector(state => state.theme.theme);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializeTheme());
+  }, [dispatch]);
+
+  const changeTheme = (newTheme) => {
+    dispatch(setTheme(newTheme));
+  };
+
+  return { theme, setTheme: changeTheme };
 };

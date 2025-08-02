@@ -5,6 +5,7 @@ import { createStyles } from 'antd-style';
 import { Rate } from 'antd';
 import { useTheme } from "../hook/useTheme";
 import { useNavigate } from 'react-router-dom';
+import { getAllProducts } from '../services/productService';
 
 
 const { Meta } = Card;
@@ -47,19 +48,23 @@ const MenuPage = () => {
     setCurrentPage(1);
   };
 
+
   useEffect(() => {
-    const fetchAll = async () => {
+    const fetchProducts = async () => {
       try {
-        const res = await fetch(`https://dummyjson.com/products?limit=194`);
-        const data = await res.json();
-        setAllProducts(data.products);
+        const res = await getAllProducts();
+        const data = res.data.products;
+
+        setAllProducts(data);
         setTotal(data.total);
-      } catch (error) {
-        console.error('Lỗi fetch dữ liệu:', error);
       }
-    };
-    fetchAll();
+      catch (err) {
+        console.error('Lỗi fetch dữ liệu:', err);
+      }
+    }
+    fetchProducts();
   }, []);
+
 
   useEffect(() => {
     let filtered = [...allProducts];

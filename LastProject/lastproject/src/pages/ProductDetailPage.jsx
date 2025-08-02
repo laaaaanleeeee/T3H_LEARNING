@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Rate, Button as AntButton } from 'antd';
 import { RiCoupon3Line } from "react-icons/ri";
-import { useCount } from "../hook/useCount";
+import { useCart } from "../hook/useCart";
 import { useTheme } from "../hook/useTheme";
+import { getDetailProduct } from '../services/productService';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [count, setCount] = useState(1);
-  const { addCount } = useCount();
+  const { addCount } = useCart();
   const { theme } = useTheme();
 
 
@@ -18,10 +19,10 @@ const ProductDetailPage = () => {
   const cardBorderColor = theme === 'dark' ? '#444' : '#eaeaea';
   const priceBgColor = theme === 'dark' ? 'bg-neutral-700' : 'bg-white';
 
-  useEffect(() => {
+   useEffect(() => {
     const fetchProduct = async () => {
-      const res = await fetch(`https://dummyjson.com/products/${id}`);
-      const data = await res.json();
+      const res = await getDetailProduct(id);
+      const data = res.data;
       setProduct(data);
     };
     fetchProduct();

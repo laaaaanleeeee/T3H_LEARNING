@@ -1,23 +1,26 @@
-import React, { useState } from 'react'
-import {useAuth} from '../hook/useAuth';
+import React, { useState } from 'react';
 import { FaCircleUser, FaRegAddressBook, FaCartShopping } from "react-icons/fa6";
 import { RiCoupon2Fill } from "react-icons/ri";
 import { CiLogout } from "react-icons/ci";
-import { Layout, Menu, theme } from 'antd';
+import { Layout, Menu } from 'antd';
 const { Sider, Content } = Layout;
 import { useNavigate } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import UserInfor from '../components/UserInfor';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutAction } from '../redux/actions/authAction';
+import { useTheme } from '../hook/useTheme';
 
 const UserInforPage = () => {
-  const { token, logout } = useAuth();
+  const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
   const [selectedKey, setSelectedKey] = useState("1");
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const handleMenuClick = (e) => {
     if (e.key === "5") {
-      logout();
+      dispatch(logoutAction());
       navigate("/login");
     } else {
       setSelectedKey(e.key);
@@ -39,37 +42,42 @@ const UserInforPage = () => {
     }
   };
 
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+  const bgColor = theme === 'dark' ? '#1f2937' : '#fff7ed';
+  const borderColor = theme === 'dark' ? 'border-gray-700' : 'border-gray-300';
 
   return (
-    <div>
+    <div className="flex justify-center items-start p-8 mt-20" style={{ backgroundColor: bgColor }}>
       {token ? (
-        <Layout className='p-25 mt-10'>
-          <Sider trigger={null} collapsible className="bg-gray-900">
+        <Layout className="max-w-5xl w-full rounded-lg shadow-lg overflow-hidden" style={{ backgroundColor: bgColor }}>
+          <Sider
+            trigger={null}
+            collapsible
+            width={250}
+            className={`bg-transparent border-r ${borderColor}`}
+            style={{ backgroundColor: 'transparent' }}
+          >
             <Menu
-              theme="dark"
+              theme={theme === 'dark' ? 'dark' : 'light'}
               mode="inline"
-              defaultSelectedKeys={['1']}
+              selectedKeys={[selectedKey]}
               onClick={handleMenuClick}
-              className="flex flex-col items-center"
+              className="h-full flex flex-col justify-start gap-3 px-4 pt-6"
               items={[
-                { key: '1', icon: <FaCircleUser />, label: 'Thông tin cá nhân' },
-                { key: '2', icon: <FaRegAddressBook />, label: 'Cài đặt địa chỉ' },
-                { key: '3', icon: <FaCartShopping />, label: 'Quản lý đơn hàng' },
-                { key: '4', icon: <RiCoupon2Fill />, label: 'Mã đã lưu' },
-                { key: '5', icon: <CiLogout />, label: 'Đăng xuất' },
+                { key: '1', icon: <FaCircleUser className="text-xl" />, label: 'Thông tin cá nhân' },
+                { key: '2', icon: <FaRegAddressBook className="text-xl" />, label: 'Cài đặt địa chỉ' },
+                { key: '3', icon: <FaCartShopping className="text-xl" />, label: 'Quản lý đơn hàng' },
+                { key: '4', icon: <RiCoupon2Fill className="text-xl" />, label: 'Mã đã lưu' },
+                { key: '5', icon: <CiLogout className="text-xl" />, label: 'Đăng xuất' },
               ]}
             />
           </Sider>
+
           <Layout>
             <Content
+              className="p-8"
               style={{
-                padding: 24,
-                minHeight: 280,
-                background: colorBgContainer,
-                borderRadius: borderRadiusLG,
+                minHeight: 400,
+                backgroundColor: bgColor,
               }}
             >
               {renderContent()}
