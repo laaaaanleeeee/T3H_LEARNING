@@ -134,7 +134,9 @@ const MenuPage = () => {
           >
             <div className="flex flex-col gap-2">
               <p className="text-lg font-semibold ">{product.title}</p>
-              <p className="text-sm ">Giá: <span className="text-red-500 font-medium">${product.price}</span></p>
+              <p className="text-sm">
+                Giá: <span className="text-red-500 font-medium">{(product.price * 26000).toLocaleString()}₫</span>
+              </p>
               <div className="flex items-center">
                 <Rate allowHalf disabled defaultValue={product.rating} />
               </div>
