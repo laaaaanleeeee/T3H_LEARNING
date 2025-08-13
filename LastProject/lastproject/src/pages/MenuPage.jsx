@@ -4,9 +4,8 @@ import { FaCartPlus } from "react-icons/fa6";
 import { createStyles } from 'antd-style';
 import { Rate } from 'antd';
 import { useTheme } from "../hook/useTheme";
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { getAllProducts } from '../services/productService';
-
 
 const { Meta } = Card;
 const { Search } = Input;
@@ -23,7 +22,7 @@ const MenuPage = () => {
   const [sortOrder, setSortOrder] = useState('');
   const { theme } = useTheme();
   const navigate = useNavigate();
-    
+
   const bgClass = theme === 'dark' ? 'bg-black' : 'bg-orange-50';
   const cardBgColor = theme === 'dark' ? '#333' : '#fff';
   const cardBorderColor = theme === 'dark' ? '#444' : '#eaeaea';
@@ -112,6 +111,15 @@ const MenuPage = () => {
             { value: 'desc', label: 'Giá giảm dần' },
           ]}
         />
+        <NavLink to="/custom-menu" className={({ isActive }) => (isActive ? 'text-orange-600 pb-2' : 'hover:text-orange-600')}>
+          <Button
+            type="primary"
+            size="middle"
+            className={styles.linearGradientButton}
+          >
+            Tạo menu cá nhân
+          </Button>
+        </NavLink>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center">

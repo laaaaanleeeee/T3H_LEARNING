@@ -1,7 +1,7 @@
 import api from "../api/axiosInstance";
 // import apiCart from "../api/apiCart";
 
-export const getAllProducts = () => api.get("/products");
+export const getAllProducts = () => api.get("/products?limit=100");
 
 export const getDetailProduct = (id) => api.get(`/products/${id}`);
 

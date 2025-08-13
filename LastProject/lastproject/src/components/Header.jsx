@@ -13,7 +13,7 @@ const accountItems = [
   { label: 'Thông tin cá nhân', key: '1' },
   { label: 'Cài đặt địa chỉ', key: '2' },
   { label: 'Quản lý đơn hàng', key: '3' },
-  { label: 'Mã đã lưu', key: '4' },
+  { label: 'Menu đã lưu', key: '4' },
   { label: 'Đăng xuất', key: '5' },
 ];
 

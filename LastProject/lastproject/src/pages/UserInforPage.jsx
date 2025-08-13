@@ -10,6 +10,8 @@ import UserInfor from '../components/UserInfor';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutAction } from '../redux/actions/authAction';
 import { useTheme } from '../hook/useTheme';
+import MenuSaved from '../components/MenuSaved';
+
 
 const UserInforPage = () => {
   const token = useSelector((state) => state.auth.token);
@@ -36,7 +38,7 @@ const UserInforPage = () => {
       case "3":
         return <div>Quản lý đơn hàng</div>;
       case "4":
-        return <div>Mã đã lưu</div>;
+        return <MenuSaved />;
       default:
         return <div>Chọn một mục từ menu bên trái.</div>;
     }
@@ -48,7 +50,7 @@ const UserInforPage = () => {
   return (
     <div className="flex justify-center items-start p-8 mt-20" style={{ backgroundColor: bgColor }}>
       {token ? (
-        <Layout className="max-w-5xl w-full rounded-lg shadow-lg overflow-hidden" style={{ backgroundColor: bgColor }}>
+        <Layout className="max-w-7xl w-full rounded-lg shadow-lg overflow-hidden" style={{ backgroundColor: bgColor }}>
           <Sider
             trigger={null}
             collapsible
@@ -66,7 +68,7 @@ const UserInforPage = () => {
                 { key: '1', icon: <FaCircleUser className="text-xl" />, label: 'Thông tin cá nhân' },
                 { key: '2', icon: <FaRegAddressBook className="text-xl" />, label: 'Cài đặt địa chỉ' },
                 { key: '3', icon: <FaCartShopping className="text-xl" />, label: 'Quản lý đơn hàng' },
-                { key: '4', icon: <RiCoupon2Fill className="text-xl" />, label: 'Mã đã lưu' },
+                { key: '4', icon: <RiCoupon2Fill className="text-xl" />, label: 'Menu đã lưu' },
                 { key: '5', icon: <CiLogout className="text-xl" />, label: 'Đăng xuất' },
               ]}
             />

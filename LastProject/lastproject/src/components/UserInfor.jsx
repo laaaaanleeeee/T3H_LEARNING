@@ -24,7 +24,7 @@ const UserInfor = () => {
 
   const isDark = theme === 'dark';
 
-  const containerClass = `max-w-xl mx-auto rounded-md shadow-md p-6 ${
+  const containerClass = `max-w-5xl mx-auto rounded-md shadow-md p-6 ${
     isDark ? 'bg-gray-800' : 'bg-white'
   }`;
 

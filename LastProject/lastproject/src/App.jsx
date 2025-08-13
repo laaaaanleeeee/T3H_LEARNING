@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import CartPage from './pages/CartPage';
 import UserInforPage from './pages/UserInforPage';
 import ProductDetailPage from './pages/ProductDetailPage';
+import CustomeMenuPage from './pages/CustomMenuPage';
 
 const PrivateRoute = ({ children }) => {
   const token = useSelector((state) => state.auth.token);
@@ -29,6 +30,7 @@ function App() {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/booking" element={<BookingNowPage />} />
+        <Route path="/custom-menu" element={<CustomeMenuPage />} />
         <Route path="/menu/:id" element={<ProductDetailPage />} />
         <Route path="/userinfo" element={<PrivateRoute><UserInforPage /></PrivateRoute>} />
         <Route path="/cart" element={<PrivateRoute><CartPage /></PrivateRoute>} />
