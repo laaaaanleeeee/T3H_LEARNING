@@ -18,7 +18,6 @@ export const AuthProvider = ({ children }) => {
       );
 
       const data = res.data;
-      console.log(data);
       setToken(data.accessToken);
       localStorage.setItem("token", data.accessToken);
       message.success("Đăng nhập thành công!");

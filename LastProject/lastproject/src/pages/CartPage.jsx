@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Table, Typography } from 'antd';
 import { useTheme } from "../hook/useTheme";
-import { getUserInfoApi } from '../services/userService';
+import { getUserInfoApi } from '../services/UserService';
 import { useCart } from '../hook/useCart';
 
 const { Title } = Typography;
